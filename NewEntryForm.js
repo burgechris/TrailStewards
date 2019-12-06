@@ -1,19 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function NewEntryForm() {
   return (
-    <View style={styles.container}>
-      <Text>This is a Form</Text>
+    <View style={{padding: 50}}>
+      <TextInput placeholder="Entry Title" style={{borderBottomColor: 'black', borderBottomWidth: 1}} />
+      <Button title="ADD" />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
