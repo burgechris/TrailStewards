@@ -6,7 +6,11 @@ export default function NewEntryForm() {
     <View>
       <View style={styles.screen}>
         <TextInput placeholder="Entry Title" style={styles.inputContainer} />
-        <Button title="ADD" />
+        <TextInput placeholder="Name" style={styles.inputContainer} />
+        <TextInput placeholder="Date" type='date' style={styles.inputContainer} />
+        <TextInput placeholder="Land Manager" style={styles.inputContainer} />
+        <TextInput placeholder="Contact" style={styles.inputContainer} />
+        <Button title="Submit" />
       </View>
     </View>
   );
