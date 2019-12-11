@@ -48,13 +48,13 @@ const InputScreen = props => {
           />
         <TextInput
         placeholder='Miles'
-        type='numeric'
+        keyboardType='numeric'
         style={styles.input}
         // value={} //State
         />
         <View style={styles.buttonContainer}>
           <Button title='Submit' />
-          <Button title='Cancel' />
+          <Button title='Cancel' onPress={props.onCancel} />
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -65,14 +65,14 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 20
   },
   input: {
     width: '80%',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-    padding: 10,
-    marginBottom: 10
+    padding: 5,
   },
   buttonContainer: {
     flexDirection: 'row',

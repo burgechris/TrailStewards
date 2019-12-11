@@ -13,10 +13,14 @@ export default function App() {
     setNewEntry(true);
   }
 
+  const cancelNewEntryHandler = () => {
+    setNewEntry(false);
+  }
+
   let content = <Splash onNewEntry={addEntryHandler}/>
 
   if (newEntry) {
-    content = <InputScreen />
+    content = <InputScreen onCancel={cancelNewEntryHandler}/>
   };
 
   return (
