@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   View, 
   TextInput, 
@@ -7,8 +7,27 @@ import {
   TouchableWithoutFeedback,
   Keyboard
  } from 'react-native';
+ import { useDispatch } from 'react-redux';
 
-const InputScreen = props => {
+import * as recordActions from '../../store/actions/workRecords'
+
+const WorkRecordEntryScreen = props => {
+
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState('');
+  const [hours, setHours] = useState('');
+  const [club, setClub] = useState('');
+  const [landManager, setLandManager] = useState('');
+  const [trailName, setTrailName] = useState('');
+  const [region, setRegion] = useState('');
+  const [miles, setMiles] = useState('');
+
+  const submitHandler = useCallback(() => {
+     dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles))
+  }, [dispatch, title, hours, club, landManager, trailName, region, miles],
+  );
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -19,41 +38,48 @@ const InputScreen = props => {
         <TextInput 
           placeholder='Entry Title'
           style={styles.input}
-          // value={} //State
+          value={title} 
+          onChangeText={setTitle}
           />
         <TextInput
           placeholder='Hours'
           style={styles.input}
-          // value={} //State
+          value={hours} 
+          onChangeText={setHours}
           />
         <TextInput
           placeholder='Club/Member Organization'
           style={styles.input}
-          // value={} //State
+          value={club} 
+          onChangeText={setClub}
           />
         <TextInput
           placeholder='Land Manager'
           style={styles.input}
-          // value={} //State
+          value={landManager} 
+          onChangeText={setLandManager}
           />
         <TextInput
           placeholder='Trail Name'
           style={styles.input}
-          // value={} //State
+          value={trailName} 
+          onChangeText={setTrailName}
           />
         <TextInput
           placeholder='Region'
           style={styles.input}
-          // value={} //State
+          value={region} 
+          onChangeText={setRegion}
           />
         <TextInput
         placeholder='Miles'
         keyboardType='numeric'
         style={styles.input}
-        // value={} //State
+        value={miles} 
+        onChangeText={setMiles}
         />
         <View style={styles.buttonContainer}>
-          <Button title='Submit' />
+          <Button title='Submit' onPress={submitHandler} />
           <Button title='Cancel' onPress={props.onCancel} />
         </View>
       </View>
@@ -80,4 +106,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default InputScreen;
+export default WorkRecordEntryScreen;

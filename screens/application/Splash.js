@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
-import Card from '../components/Card';
+import Card from '../../components/Card';
 
 const Splash = props => {
   return (
     <ImageBackground
-    source={require('../assets/topo.jpg')}
+    source={require('../../assets/topo.jpg')}
     style={styles.image}
     resizeMode='cover'
     >
