@@ -3,6 +3,7 @@ import WorkRecord from '../models/workRecord';
 const WORKRECORDS = [
   new WorkRecord(
     'r1',
+    'u1',
     'Sandy Ridge Work Day',
     'NWTA',
     'BLM',
@@ -12,6 +13,7 @@ const WORKRECORDS = [
   ),
   new WorkRecord(
     'r2',
+    'u1',
     'Rocky Point Work Day',
     'NWTA',
     'BLM',
@@ -21,6 +23,7 @@ const WORKRECORDS = [
   ),
   new WorkRecord(
     'r3',
+    'u1',
     'Tylers Work Day',
     'COTA',
     'BLM',

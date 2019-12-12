@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
 import Card from '../../components/Card';
+import WorkRecordsScreen from './WorkRecordsScreen';
 
 const Splash = props => {
   return (
@@ -15,7 +16,7 @@ const Splash = props => {
               <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
           </Card>
           <Card>
-            <Button title="ACCOUNT DETAILS" />
+            <Button title="VIEW RECORDS" onPress={WorkRecordsScreen} />
           </Card>
       </View>
     </ImageBackground>
