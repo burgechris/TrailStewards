@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { 
   View, 
   StyleSheet, 
+  ScrollView,
   Button,
   TouchableWithoutFeedback,
   Keyboard
@@ -39,42 +40,36 @@ const WorkRecordEntryScreen = props => {
           <Input 
             id='title'
             label='Entry Title'
-            style={styles.input}
             value={title} 
             onChangeText={setTitle}
             />
           <Input
             id='hours'
             label='Hours'
-            style={styles.input}
             value={hours} 
             onChangeText={setHours}
             />
           <Input
             id='club'
             label='Club/Member Organization'
-            style={styles.input}
             value={club} 
             onChangeText={setClub}
             />
           <Input
             id='landManager'
             label='Land Manager'
-            style={styles.input}
             value={landManager} 
             onChangeText={setLandManager}
             />
           <Input
             id='trailName'
             label='Trail Name'
-            style={styles.input}
             value={trailName} 
             onChangeText={setTrailName}
             />
           <Input
             id='region'
             label='Region'
-            style={styles.input}
             value={region} 
             onChangeText={setRegion}
             />
@@ -82,7 +77,6 @@ const WorkRecordEntryScreen = props => {
             id='miles'
             label='Miles'
             keyboardType='numeric'
-            style={styles.input}
             value={miles} 
             onChangeText={setMiles}
           />
@@ -96,23 +90,24 @@ const WorkRecordEntryScreen = props => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//     marginTop: 20
-//   },
-//   input: {
-//     width: '80%',
-//     borderBottomColor: 'black',
-//     borderBottomWidth: 1,
-//     padding: 5,
-//   },
-//   buttonContainer: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-around'
-//   }
-// });
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 20
+  },
+  // input: {
+  //   width: '80%',
+  //   borderBottomColor: 'black',
+  //   borderBottomWidth: 1,
+  //   padding: 5,
+  // },
+  buttonContainer: {
+    paddingTop: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  }
+});
 
 export default WorkRecordEntryScreen;
