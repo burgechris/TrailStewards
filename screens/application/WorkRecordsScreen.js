@@ -1,11 +1,11 @@
 import React from 'react';
-import { FlatList, Button } from 'react-native';
+import { FlatList, Platform, Button } from 'react-native';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
 import HeaderButton from '../../components/HeaderButton';
 import RecordData from '../../data/dummyData'
-import * as workRecordsActions from '../../store/actions/workRecords';
 import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
 const WorkRecordsScreen = props => {
@@ -34,9 +34,9 @@ WorkRecordsScreen.navigationOptions = navData => {
   return {
     headerTitle: 'All Records',
     headerRight: (
-      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+      <HeaderButtons>
         <Item
-          title="Add Work Record"
+          title="Add"
           iconName={Platform.OS === 'android' ? 'md-add' : 'ios-add'}
           onPress={() => {
             navData.navigation.navigate('NewWorkRecord');

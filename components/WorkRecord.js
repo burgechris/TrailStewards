@@ -28,13 +28,11 @@ const styles = StyleSheet.create({
     margin: 20
   },
   title: {
-    fontWeight: 'bold',
     // fontFamily: 'open-sans-bold',
     fontSize: 18,
     marginVertical: 2
   },
   club: {
-    fontWeight: 'bold',
     // fontFamily: 'open-sans',
     fontSize: 14,
     color: '#888'

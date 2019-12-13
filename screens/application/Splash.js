@@ -3,8 +3,20 @@ import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
 import Card from '../../components/Card';
 import WorkRecordsScreen from './WorkRecordsScreen';
+import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
 const Splash = props => {
+  // const [newEntry, setNewEntry] = useState(false);
+  // const [viewRecords, setViewRecords] = useState(false);
+
+  // const addEntryHandler = () => {
+  //   setNewEntry(true);
+  // }
+
+  // const viewRecordsHandler = () => {
+  //   setViewRecords(true);
+  // }
+
   return (
     <ImageBackground
     source={require('../../assets/topo.jpg')}
@@ -13,10 +25,10 @@ const Splash = props => {
     >
       <View style={styles.screen}>
           <Card>
-              <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
+          <Button title="NEW ENTRY" onPress={<WorkRecordEntryScreen/>}/>
           </Card>
           <Card>
-            <Button title="VIEW RECORDS" onPress={props.onViewRecords} />
+            <Button title="VIEW RECORDS" onPress={<WorkRecordsScreen/>} />
           </Card>
       </View>
     </ImageBackground>

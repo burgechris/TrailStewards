@@ -4,7 +4,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import WorkRecordsScreen from '../screens/application/WorkRecordsScreen';
 import WorkRecordEntryScreen from '../screens/application/WorkRecordEntryScreen';
 import Splash from '../screens/application/Splash';
-import Colors from '../constants/Colors';
+import Colors from '../constants/colors';
 
 
 const RecordsNavigator = createStackNavigator (
