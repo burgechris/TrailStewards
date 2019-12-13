@@ -6,17 +6,16 @@ import Header from '../../components/Header';
 import WorkRecordsScreen from './WorkRecordsScreen';
 import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
-const Splash = props => {
+const HomeScreen = props => {
   
 
   return (
-    <View>
-    <Header title="Trail Stewards" />
     <ImageBackground
     source={require('../../assets/topo.jpg')}
     style={styles.image}
     resizeMode='cover'
     >
+    <Header title="Trail Stewards" />
       <View style={styles.screen}>
           <Card>
           <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
@@ -26,7 +25,6 @@ const Splash = props => {
           </Card>
       </View>
     </ImageBackground>
-    </View>
   );
 };
 
@@ -46,4 +44,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Splash;
+export default HomeScreen;

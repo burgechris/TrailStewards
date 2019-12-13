@@ -3,13 +3,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import WorkRecordsScreen from '../screens/application/WorkRecordsScreen';
 import WorkRecordEntryScreen from '../screens/application/WorkRecordEntryScreen';
-import Splash from '../screens/application/Splash';
+import HomeScreen from '../screens/application/HomeScreen';
 import Colors from '../constants/colors';
 
 
 const RecordsNavigator = createStackNavigator (
   {
-    Splash: Splash,
+    HomeScreen: HomeScreen,
     WorkRecords: WorkRecordsScreen,
     NewWorkRecord: WorkRecordEntryScreen
   },

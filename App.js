@@ -7,7 +7,7 @@ import * as Font from 'expo-font';
 
 import workRecordsReducer from './store/reducers/workRecords';
 import RecordsNavigator from './navigation/RecordsNavigator';
-import Splash from './screens/application/Splash';
+import HomeScreen from './screens/application/HomeScreen';
 import WorkRecordEntryScreen from './screens/application/WorkRecordEntryScreen';
 import WorkRecordsScreen from './screens/application/WorkRecordsScreen';
 
@@ -33,7 +33,7 @@ export default function App() {
     setNewEntry(false);
   }
 
-  let content = <Splash onNewEntry={addEntryHandler} onViewRecords={viewRecordsHandler} />
+  let content = <HomeScreen onNewEntry={addEntryHandler} onViewRecords={viewRecordsHandler} />
   if (newEntry) {
     content = <WorkRecordEntryScreen onCancel={cancelNewEntryHandler} />
   } else if (viewRecords) {
