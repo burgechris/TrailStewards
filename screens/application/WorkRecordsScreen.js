@@ -3,22 +3,25 @@ import { FlatList, Button } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
+import HeaderButton from '../../components/HeaderButton';
+import RecordData from '../../data/dummyData'
 import * as workRecordsActions from '../../store/actions/workRecords';
+import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
 const WorkRecordsScreen = props => {
-  const records = useSelector(state => state.workRecords.workRecords);
+  // const workRecords = useSelector(state => state.workRecords.workRecords);
 
   return(
     <FlatList 
-      data={records} 
+      data={RecordData} 
       renderItem={itemData => (
         <WorkRecord
           title={itemData.item.title}
           club={itemData.item.club}
           onSelect={() => {
-            props.navigation.navigate('PlaceDetail', {
+            props.navigation.navigate('WorkRecordDetail', {
               workRecordTitle: itemData.item.title,
-              placeId: itemData.item.id
+              workRecordId: itemData.item.id
             });
           }}
         />
@@ -26,5 +29,22 @@ const WorkRecordsScreen = props => {
      /> 
   );
 };
+
+WorkRecordsScreen.navigationOptions = navData => {
+  return {
+    headerTitle: 'All Records',
+    headerRight: (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="Add Work Record"
+          iconName={Platform.OS === 'android' ? 'md-add' : 'ios-add'}
+          onPress={() => {
+            navData.navigation.navigate('NewWorkRecord');
+          }}
+        />
+      </HeaderButtons>
+    )
+  }
+}
 
 export default WorkRecordsScreen;

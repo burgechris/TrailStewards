@@ -16,7 +16,7 @@ const Splash = props => {
               <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
           </Card>
           <Card>
-            <Button title="VIEW RECORDS" onPress={WorkRecordsScreen} />
+            <Button title="VIEW RECORDS" onPress={props.onViewRecords} />
           </Card>
       </View>
     </ImageBackground>
