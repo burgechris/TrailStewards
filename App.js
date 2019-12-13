@@ -43,7 +43,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.screen}>
-      <Header />
+        <Header title="Trail Stewards" />
         {content}
       </View>
     </Provider>

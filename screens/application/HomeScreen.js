@@ -12,7 +12,6 @@ const HomeScreen = props => {
     style={styles.image}
     resizeMode='cover'
     >
-    <Header title="Trail Stewards" />
       <View style={styles.screen}>
           <Card>
           <Button title="NEW ENTRY" onPress={props.onNewEntry}/>

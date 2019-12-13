@@ -7,9 +7,11 @@ import {
   TouchableWithoutFeedback,
   Keyboard
  } from 'react-native';
+ import { Switch, Router, Route } from 'react-router-native';
  import { useDispatch } from 'react-redux';
 
 import Input from '../../components/Input';
+import WorkRecordsScreen from './WorkRecordsScreen';
 import * as recordActions from '../../store/actions/workRecords'
 
 const WorkRecordEntryScreen = props => {
@@ -24,6 +26,7 @@ const WorkRecordEntryScreen = props => {
   const dispatch = useDispatch();
   const submitHandler = () => {
      dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles));
+     props.onViewRecords();
   };
   
 
