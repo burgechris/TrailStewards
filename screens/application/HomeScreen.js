@@ -4,11 +4,8 @@ import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 import Card from '../../components/Card';
 import Header from '../../components/Header';
 import WorkRecordsScreen from './WorkRecordsScreen';
-import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
 const HomeScreen = props => {
-  
-
   return (
     <ImageBackground
     source={require('../../assets/topo.jpg')}
@@ -18,7 +15,9 @@ const HomeScreen = props => {
     <Header title="Trail Stewards" />
       <View style={styles.screen}>
           <Card>
-          <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
+          <Button title="NEW ENTRY" onPress={() => {
+            props.navigation.navigate('NewWorkRecord')
+          }}/>
           </Card>
           <Card>
             <Button title="VIEW RECORDS" onPress={props.onViewRecords} />

@@ -18,27 +18,27 @@ const rootReducer= combineReducers({
 const store = createStore(rootReducer);
 
 export default function App() {
-  const [newEntry, setNewEntry] = useState(false);
-  const [viewRecords, setViewRecords] = useState(false);
+  // const [newEntry, setNewEntry] = useState(false);
+  // const [viewRecords, setViewRecords] = useState(false);
 
-  const addEntryHandler = () => {
-    setNewEntry(true);
-  }
+  // const addEntryHandler = () => {
+  //   setNewEntry(true);
+  // }
 
-  const viewRecordsHandler = () => {
-    setViewRecords(true);
-  }
+  // const viewRecordsHandler = () => {
+  //   setViewRecords(true);
+  // }
 
-  const cancelNewEntryHandler = () => {
-    setNewEntry(false);
-  }
+  // const cancelNewEntryHandler = () => {
+  //   setNewEntry(false);
+  // }
 
-  let content = <HomeScreen onNewEntry={addEntryHandler} onViewRecords={viewRecordsHandler} />
-  if (newEntry) {
-    content = <WorkRecordEntryScreen onCancel={cancelNewEntryHandler} />
-  } else if (viewRecords) {
-    content = <WorkRecordsScreen />
-  };
+  // let content = <HomeScreen onNewEntry={addEntryHandler} onViewRecords={viewRecordsHandler} />
+  // if (newEntry) {
+  //   content = <WorkRecordEntryScreen onCancel={cancelNewEntryHandler} />
+  // } else if (viewRecords) {
+  //   content = <WorkRecordsScreen />
+  // };
   
   // const [fontLoaded, setFontLoaded] = useState(false);
 
@@ -46,7 +46,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.screen}>
-        {content}
+        <HomeScreen />
       </View>
     </Provider>
   );
