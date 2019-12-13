@@ -3,19 +3,18 @@ import { FlatList, Button } from 'react-native';
 import { useSelector } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
-// import * as workRecordsActions from '../../store/actions/workRecords';
+import * as workRecordsActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
-  const userRecords = useSelector(state => state.workRecords.userRecords);
+  const records = useSelector(state => state.workRecords.workRecords);
 
   return(
     <FlatList 
-      data={userRecords} 
-      keyExtractor={record => record.id}
-      renderItem={recordData => (
+      data={records} 
+      renderItem={itemData => (
         <WorkRecord
-          title={recordData.record.title}
-          club={recordData.record.club}
+          title={itemData.item.title}
+          club={itemData.item.club}
         >
           <Button 
             title='HOME'
