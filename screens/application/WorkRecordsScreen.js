@@ -15,12 +15,13 @@ const WorkRecordsScreen = props => {
         <WorkRecord
           title={itemData.item.title}
           club={itemData.item.club}
-        >
-          <Button 
-            title='HOME'
-            onPress={props.onCancel}
-          />
-        </WorkRecord>
+          onSelect={() => {
+            props.navigation.navigate('PlaceDetail', {
+              workRecordTitle: itemData.item.title,
+              placeId: itemData.item.id
+            });
+          }}
+        />
       )}
      /> 
   );
