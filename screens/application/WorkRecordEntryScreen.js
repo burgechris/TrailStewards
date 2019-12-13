@@ -13,9 +13,6 @@ import Input from '../../components/Input';
 import * as recordActions from '../../store/actions/workRecords'
 
 const WorkRecordEntryScreen = props => {
-
-  const dispatch = useDispatch();
-
   const [title, setTitle] = useState('');
   const [hours, setHours] = useState('');
   const [club, setClub] = useState('');
@@ -23,11 +20,13 @@ const WorkRecordEntryScreen = props => {
   const [trailName, setTrailName] = useState('');
   const [region, setRegion] = useState('');
   const [miles, setMiles] = useState('');
-
-  const submitHandler = useCallback(() => {
-     dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles))
-  }, [dispatch, title, hours, club, landManager, trailName, region, miles],
-  );
+  
+  const dispatch = useDispatch();
+  const submitHandler = () => {
+     dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles));
+     props.navigation.goBack();
+  };
+  
 
   return (
     <TouchableWithoutFeedback
@@ -89,6 +88,10 @@ const WorkRecordEntryScreen = props => {
     </TouchableWithoutFeedback>
   );
 };
+
+WorkRecordEntryScreen.navigationOptions = {
+  headerTitle: "Add Record"
+}
 
 const styles = StyleSheet.create({
   screen: {

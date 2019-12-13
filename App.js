@@ -46,7 +46,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.screen}>
-        <HomeScreen />
+        <RecordsNavigator />
       </View>
     </Provider>
   );
