@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
 import Card from '../../components/Card';
+import Header from '../../components/Header';
 import WorkRecordsScreen from './WorkRecordsScreen';
 import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
 const Splash = props => {
-  // const [newEntry, setNewEntry] = useState(false);
-  // const [viewRecords, setViewRecords] = useState(false);
-
-  // const addEntryHandler = () => {
-  //   setNewEntry(true);
-  // }
-
-  // const viewRecordsHandler = () => {
-  //   setViewRecords(true);
-  // }
+  
 
   return (
+    <View>
+    <Header title="Trail Stewards" />
     <ImageBackground
     source={require('../../assets/topo.jpg')}
     style={styles.image}
@@ -25,13 +19,14 @@ const Splash = props => {
     >
       <View style={styles.screen}>
           <Card>
-          <Button title="NEW ENTRY" onPress={<WorkRecordEntryScreen/>}/>
+          <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
           </Card>
           <Card>
-            <Button title="VIEW RECORDS" onPress={<WorkRecordsScreen/>} />
+            <Button title="VIEW RECORDS" onPress={props.onViewRecords} />
           </Card>
       </View>
     </ImageBackground>
+    </View>
   );
 };
 

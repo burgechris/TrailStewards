@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Platform, Button } from 'react-native';
+import { View, FlatList, Platform, Button } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector } from 'react-redux';
 
@@ -7,26 +7,30 @@ import WorkRecord from '../../components/WorkRecord';
 import HeaderButton from '../../components/HeaderButton';
 import RecordData from '../../data/dummyData'
 import WorkRecordEntryScreen from './WorkRecordEntryScreen';
+import RecordsNavigator from '../../navigation/RecordsNavigator';
 
 const WorkRecordsScreen = props => {
   // const workRecords = useSelector(state => state.workRecords.workRecords);
 
   return(
-    <FlatList 
-      data={RecordData} 
-      renderItem={itemData => (
-        <WorkRecord
-          title={itemData.item.title}
-          club={itemData.item.club}
-          onSelect={() => {
-            props.navigation.navigate('WorkRecordDetail', {
-              workRecordTitle: itemData.item.title,
-              workRecordId: itemData.item.id
-            });
-          }}
-        />
-      )}
-     /> 
+    <View>
+      <RecordsNavigator />
+      <FlatList 
+        data={RecordData} 
+        renderItem={itemData => (
+          <WorkRecord
+            title={itemData.item.title}
+            club={itemData.item.club}
+            onSelect={() => {
+              props.navigation.navigate('WorkRecordDetail', {
+                workRecordTitle: itemData.item.title,
+                workRecordId: itemData.item.id
+              });
+            }}
+          />
+        )}
+      /> 
+    </View>
   );
 };
 
