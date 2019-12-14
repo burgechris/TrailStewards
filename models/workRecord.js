@@ -1,9 +1,10 @@
 class WorkRecord {
-  constructor (id, userId, title, hours, club, landManager, trailName, region, miles ) {
+  constructor (id, userId, title, hours, volunteers, club, landManager, trailName, region, miles ) {
     this.id = id;
     this.userId = userId;
     this.title = title;
     this.hours = hours;
+    this.volunteers = volunteers;
     this.club = club;
     this.landManager = landManager;
     this.trailName = trailName;

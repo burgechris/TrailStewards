@@ -17,6 +17,7 @@ import * as recordActions from '../../store/actions/workRecords'
 const WorkRecordEntryScreen = props => {
   const [title, setTitle] = useState('');
   const [hours, setHours] = useState('');
+  const [volunteers, setVolunteers] = useState('');
   const [club, setClub] = useState('');
   const [landManager, setLandManager] = useState('');
   const [trailName, setTrailName] = useState('');
@@ -50,6 +51,12 @@ const WorkRecordEntryScreen = props => {
             value={hours} 
             onChangeText={setHours}
             />
+          <Input
+            id='volunteers'
+            label='Number of Volunteers'
+            value={volunteers}
+            onChangeText={setVolunteers}
+          />
           <Input
             id='club'
             label='Club/Member Organization'

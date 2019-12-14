@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
+import{ useScreens } from 'react-native-screens';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
 import workRecordsReducer from './store/reducers/workRecords';
-import HomeScreen from './screens/application/HomeScreen';
-import Header from './components/Header';
-import WorkRecordEntryScreen from './screens/application/WorkRecordEntryScreen';
-import WorkRecordsScreen from './screens/application/WorkRecordsScreen';
 import RecordsNavigator from './navigator/RecordsNavigator';
+
+useScreens();
 
 const rootReducer= combineReducers({
   workRecords: workRecordsReducer

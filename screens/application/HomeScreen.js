@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
 import Card from '../../components/Card';
+import Colors from '../../constants/colors';
 import Header from '../../components/Header';
 import WorkRecordsScreen from './WorkRecordsScreen';
 
@@ -26,6 +27,10 @@ const HomeScreen = props => {
       </View>
     </ImageBackground>
   );
+};
+
+HomeScreen.navigationOptions = {
+  headerTitle: 'Trail Stewards',
 };
 
 const styles = StyleSheet.create({
