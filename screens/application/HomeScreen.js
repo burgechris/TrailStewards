@@ -14,10 +14,12 @@ const HomeScreen = props => {
     >
       <View style={styles.screen}>
           <Card>
-          <Button title="NEW ENTRY" onPress={props.onNewEntry}/>
+          <Button title="NEW ENTRY" onPress={() => {
+            props.navigation.navigate({routeName: 'NewWorkRecord'})
+          }}/>
           </Card>
           <Card>
-            <Button title="VIEW RECORDS" onPress={props.onViewRecords} />
+          <Button title="VIEW RECORDS" onPress={() => {}} />
           </Card>
       </View>
     </ImageBackground>

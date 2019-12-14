@@ -10,6 +10,7 @@ import HomeScreen from './screens/application/HomeScreen';
 import Header from './components/Header';
 import WorkRecordEntryScreen from './screens/application/WorkRecordEntryScreen';
 import WorkRecordsScreen from './screens/application/WorkRecordsScreen';
+import RecordsNavigator from './navigator/RecordsNavigator';
 
 const rootReducer= combineReducers({
   workRecords: workRecordsReducer
@@ -43,8 +44,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.screen}>
-        <Header title="Trail Stewards" />
-        {content}
+        <RecordsNavigator />
       </View>
     </Provider>
   );
