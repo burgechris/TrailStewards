@@ -21,11 +21,11 @@ const HomeScreen = props => {
               props.navigation.navigate({ routeName: 'MemberGroups' })
             }} />
           </Card>
-          <Card>
+          {/* <Card>
           <Button title="VIEW ALL RECORDS" onPress={() => {
             props.navigation.navigate({routeName: 'WorkRecords'})
           }} />
-          </Card>
+          </Card> */}
       </View>
     </ImageBackground>
   );
