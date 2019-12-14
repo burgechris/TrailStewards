@@ -61,8 +61,8 @@ export const MEMBERGROUPS = [
 export const WORKRECORDS = [
   new WorkRecord(
     'r1',
-    'm1',
     'u1',
+    'm1',
     'Sandy Ridge Work Day',
     6,
     30,
@@ -74,8 +74,8 @@ export const WORKRECORDS = [
   ),
   new WorkRecord(
     'r2',
-    'm1',
     'u1',
+    'm1',
     'Rocky Point Work Day',
     6,
     25,
@@ -87,8 +87,8 @@ export const WORKRECORDS = [
   ),
   new WorkRecord(
     'r3',
-    'm2',
     'u1',
+    'm2',
     'Tylers Work Day',
     4,
     15,

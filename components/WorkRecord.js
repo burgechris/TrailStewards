@@ -13,7 +13,7 @@ import Card from './Card'
 
 const WorkRecord = props => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.onSelectRecord} >
     <Card style={styles.record} >
       <View>
         <Text style={styles.title}>{props.title}</Text>
@@ -22,7 +22,7 @@ const WorkRecord = props => {
     </Card>
     </TouchableOpacity>
   );
-};
+}; 
 
 const styles = StyleSheet.create({
   record: {

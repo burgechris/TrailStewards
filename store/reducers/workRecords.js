@@ -1,10 +1,9 @@
 import { CREATE_RECORD } from '../actions/workRecords';
 import WorkRecord from '../../models/workRecord';
-import WORKRECORDS from '../../data/dummyData';
+import { WORKRECORDS } from '../../data/dummyData';
 
 const initialState = {
   workRecords: WORKRECORDS,
-  filteredRecords: WORKRECORDS
 }
 
 
@@ -13,6 +12,9 @@ export default (state = initialState, action) => {
     case CREATE_RECORD:
       const newWorkRecord = new WorkRecord(
         new Date().toString(),
+        action.recordData.id,
+        action.recordData.userId,
+        action.recordData.memberGroupId,
         action.recordData.title,
         action.recordData.hours,
         action.recordData.volunteers,
