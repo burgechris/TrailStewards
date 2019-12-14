@@ -4,7 +4,7 @@ import WORKRECORDS from '../../data/dummyData';
 
 const initialState = {
   workRecords: WORKRECORDS,
-  userRecords: WORKRECORDS.filter(wr => wr.userId === 'u1')
+  filteredRecords: WORKRECORDS
 }
 
 
@@ -13,9 +13,9 @@ export default (state = initialState, action) => {
     case CREATE_RECORD:
       const newWorkRecord = new WorkRecord(
         new Date().toString(),
-        'u1',
         action.recordData.title,
         action.recordData.hours,
+        action.recordData.volunteers,
         action.recordData.club,
         action.recordData.landManager,
         action.recordData.trailName,
@@ -25,7 +25,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         workRecords: state.workRecords.concat(newWorkRecord),
-        userRecords: state.userRecords.concat(newWorkRecord)
       };
   }
   return state;

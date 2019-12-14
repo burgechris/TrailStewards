@@ -1,7 +1,8 @@
 class WorkRecord {
-  constructor (id, userId, title, hours, volunteers, club, landManager, trailName, region, miles ) {
+  constructor (id, userId, memberGroupId, title, hours, volunteers, club, landManager, trailName, region, miles ) {
     this.id = id;
     this.userId = userId;
+    this.memberGroupId = memberGroupId;
     this.title = title;
     this.hours = hours;
     this.volunteers = volunteers;
@@ -13,4 +14,4 @@ class WorkRecord {
   }
 }
 
-export default WorkRecord;
+export default WorkRecord; 

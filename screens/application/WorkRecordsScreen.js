@@ -4,15 +4,10 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
-import { WORKRECORDS } from '../../data/dummyData';
-import WorkRecordEntryScreen from './WorkRecordEntryScreen';
+import { MEMBERGROUPS } from '../../data/dummyData';
 
 const WorkRecordsScreen = props => {
   const workRecords = useSelector(state => state.workRecords.workRecords);
-
-  // const recordID = props.navigation.getParam('workRecordId');
-
-  // const selectedRecord = WORKRECORDS.find(wr => wr.id === wrId);
 
   return(
     <View style={styles.screen}>
@@ -31,10 +26,6 @@ const WorkRecordsScreen = props => {
 };
 
 WorkRecordsScreen.navigationOptions = navigationData => {
-  // const wrId = navigationData.navigation.getParam('workRecordId');
-
-  // const selectedRecord = WORKRECORDS.find(wr => wr.id === wrId);
-
   return {
     headerTitle: 'All Records'
   };

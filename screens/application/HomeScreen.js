@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Button, ImageBackground } from 'react-native';
 
 import Card from '../../components/Card';
-import Colors from '../../constants/colors';
-import Header from '../../components/Header';
-import WorkRecordsScreen from './WorkRecordsScreen';
 
 const HomeScreen = props => {
   return (
@@ -20,7 +17,12 @@ const HomeScreen = props => {
           }}/>
           </Card>
           <Card>
-          <Button title="VIEW RECORDS" onPress={() => {
+            <Button title="MEMBER GROUPS" onPress={() => {
+              props.navigation.navigate({ routeName: 'MemberGroups' })
+            }} />
+          </Card>
+          <Card>
+          <Button title="VIEW ALL RECORDS" onPress={() => {
             props.navigation.navigate({routeName: 'WorkRecords'})
           }} />
           </Card>
