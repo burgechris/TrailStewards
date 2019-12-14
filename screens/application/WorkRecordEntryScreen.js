@@ -26,7 +26,7 @@ const WorkRecordEntryScreen = props => {
   const dispatch = useDispatch();
   const submitHandler = () => {
      dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles));
-     props.onViewRecords();
+     props.navigation.goBack();
   };
   
 
@@ -83,7 +83,9 @@ const WorkRecordEntryScreen = props => {
           />
           <View style={styles.buttonContainer}>
             <Button title='Submit' onPress={submitHandler} />
-            <Button title='Cancel' onPress={props.onCancel} />
+            <Button title='Cancel' onPress={() => {
+              props.navigation.goBack();
+            }} />
           </View>
         </View>
       </ScrollView>

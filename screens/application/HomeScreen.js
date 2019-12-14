@@ -19,7 +19,9 @@ const HomeScreen = props => {
           }}/>
           </Card>
           <Card>
-          <Button title="VIEW RECORDS" onPress={() => {}} />
+          <Button title="VIEW RECORDS" onPress={() => {
+            props.navigation.navigate({routeName: 'WorkRecords'})
+          }} />
           </Card>
       </View>
     </ImageBackground>

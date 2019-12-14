@@ -4,16 +4,16 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
-import RecordData from '../../data/dummyData'
+import WORKRECORDS from '../../data/dummyData'
 import WorkRecordEntryScreen from './WorkRecordEntryScreen';
 
 const WorkRecordsScreen = props => {
-  // const workRecords = useSelector(state => state.workRecords.workRecords);
+  const workRecords = useSelector(state => state.workRecords.workRecords);
 
   return(
     <View style={styles.screen}>
         <FlatList 
-          data={RecordData} 
+          data={workRecords} 
           keyExtractor={item => item.id}
           renderItem={itemData => (
             <WorkRecord
