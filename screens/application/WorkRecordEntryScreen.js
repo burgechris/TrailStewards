@@ -26,7 +26,7 @@ const WorkRecordEntryScreen = props => {
   
   const dispatch = useDispatch();
   const submitHandler = () => {
-     dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles));
+     dispatch(recordActions.createRecord(title, hours, volunteers, club, landManager, trailName, region, miles));
      props.navigation.goBack();
   };
   

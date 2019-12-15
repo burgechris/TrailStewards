@@ -1,9 +1,10 @@
-import React from 'react';
-import { View, FlatList, Text, Platform, Button, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, FlatList, Text, Platform, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
+import WorkRecordDetails from '../../components/WorkRecordDetails';
 import { MEMBERGROUPS } from '../../data/dummyData';
 
 const WorkRecordsScreen = props => {
@@ -12,6 +13,12 @@ const WorkRecordsScreen = props => {
   const workRecords = useSelector(state => state.workRecords.workRecords);
 
   const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
+
+  const [detailView, setDetailView] = useState(false);
+
+  const seeDetailsHandler = () => {
+    setDetailView(true);
+  }
 
   if (displayedWorkRecords.length === 0) {
     return (
@@ -22,17 +29,24 @@ const WorkRecordsScreen = props => {
   }
 
   return(
+    
     <View style={styles.screen}>
-        <FlatList 
-          data={displayedWorkRecords} 
-          keyExtractor={item => item.id}
-          renderItem={itemData => (
+      <FlatList 
+        data={displayedWorkRecords} 
+        keyExtractor={item => item.id}
+        renderItem={itemData => (
+          <TouchableOpacity onPress={seeDetailsHandler}>
             <WorkRecord
               title={itemData.item.title}
               club={itemData.item.club}
             />
+          </TouchableOpacity>
           )}
         /> 
+      <WorkRecordDetails 
+        visible={detailView}
+        onCancel={() => setDetailView(false)}
+      />
     </View>
   );
 };

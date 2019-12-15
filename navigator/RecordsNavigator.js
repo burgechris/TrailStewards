@@ -4,7 +4,6 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from '../screens/application/HomeScreen';
 import MemberGroupsScreen from '../screens/application/MemberGroupsScreen';
 import WorkRecordsScreen from '../screens/application/WorkRecordsScreen';
-import WorkRecordDetailsScreen from '../screens/application/WorkRecordDetailsScreen';
 import WorkRecordEntryScreen from '../screens/application/WorkRecordEntryScreen';
 import Colors from '../constants/colors';
 
