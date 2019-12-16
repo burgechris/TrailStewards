@@ -7,27 +7,29 @@ import {
   TouchableWithoutFeedback,
   Keyboard
  } from 'react-native';
+ import { Switch, Router, Route } from 'react-router-native';
  import { useDispatch } from 'react-redux';
 
 import Input from '../../components/Input';
+import WorkRecordsScreen from './WorkRecordsScreen';
 import * as recordActions from '../../store/actions/workRecords'
 
 const WorkRecordEntryScreen = props => {
-
-  const dispatch = useDispatch();
-
   const [title, setTitle] = useState('');
   const [hours, setHours] = useState('');
+  const [volunteers, setVolunteers] = useState('');
   const [club, setClub] = useState('');
   const [landManager, setLandManager] = useState('');
   const [trailName, setTrailName] = useState('');
   const [region, setRegion] = useState('');
   const [miles, setMiles] = useState('');
-
-  const submitHandler = useCallback(() => {
-     dispatch(recordActions.createRecord(title, hours, club, landManager, trailName, region, miles))
-  }, [dispatch, title, hours, club, landManager, trailName, region, miles],
-  );
+  
+  const dispatch = useDispatch();
+  const submitHandler = () => {
+     dispatch(recordActions.createRecord(title, hours, volunteers, club, landManager, trailName, region, miles));
+     props.navigation.goBack();
+  };
+  
 
   return (
     <TouchableWithoutFeedback
@@ -49,6 +51,12 @@ const WorkRecordEntryScreen = props => {
             value={hours} 
             onChangeText={setHours}
             />
+          <Input
+            id='volunteers'
+            label='Number of Volunteers'
+            value={volunteers}
+            onChangeText={setVolunteers}
+          />
           <Input
             id='club'
             label='Club/Member Organization'
@@ -82,13 +90,19 @@ const WorkRecordEntryScreen = props => {
           />
           <View style={styles.buttonContainer}>
             <Button title='Submit' onPress={submitHandler} />
-            <Button title='Cancel' onPress={props.onCancel} />
+            <Button title='Cancel' onPress={() => {
+              props.navigation.goBack();
+            }} />
           </View>
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>
   );
 };
+
+WorkRecordEntryScreen.navigationOptions = {
+  headerTitle: "Add Record"
+}
 
 const styles = StyleSheet.create({
   screen: {

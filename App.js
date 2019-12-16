@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
+import{ useScreens } from 'react-native-screens';
 import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
 import workRecordsReducer from './store/reducers/workRecords';
-import Header from './components/Header';
-import Splash from './screens/application/Splash';
-import WorkRecordEntryScreen from './screens/application/WorkRecordEntryScreen';
+import RecordsNavigator from './navigator/RecordsNavigator';
+
+useScreens();
 
 const rootReducer= combineReducers({
   workRecords: workRecordsReducer
@@ -16,27 +18,10 @@ const rootReducer= combineReducers({
 const store = createStore(rootReducer);
 
 export default function App() {
-  const [newEntry, setNewEntry] = useState(false);
-
-  const addEntryHandler = () => {
-    setNewEntry(true);
-  }
-
-  const cancelNewEntryHandler = () => {
-    setNewEntry(false);
-  }
-
-  let content = <Splash onNewEntry={addEntryHandler}/>
-
-  if (newEntry) {
-    content = <WorkRecordEntryScreen onCancel={cancelNewEntryHandler}/>
-  };
-
   return (
     <Provider store={store}>
       <View style={styles.screen}>
-        <Header title='Trail Stewards'/>
-        {content}
+        <RecordsNavigator />
       </View>
     </Provider>
   );
@@ -46,4 +31,4 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   }
-});
+});  

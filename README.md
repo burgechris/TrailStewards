@@ -1,61 +1,62 @@
 # Trail Stewards
 
+#### _iOS or Android Application, 2019_
+
+#### By _**Christopher Burge**_
+
 This application will allow a way for mountain bike advocacy groups across the state of Oregon to accurately track and record volunteer hours and trail-building efforts. It will aggregate this data to be used as a reporting tool for Oregon Mountain Biking Coalition and other state-wide member trail organizations.
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
 _Latest version of node.js_
 _iPhone or Android device_
+_Alternatively you could run on a simulator through Android Studio and XCode_
+  _To run iPhone simulator, MacOS required_
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+- Download Expo from the App store or Google Play to your device
+  - Alternatively download Android Studio and/or XCode (only available for MacOS)
+- Open Terminal
+- Type: git clone https://github.com/burgechris/TrailStewards/
+- Run: npm install
+- Run: expo start
+  - Scan the QR code with the Expo app (Android) or the Camera app (iOS)
+  - Alternatively: Press a for Android Emulator or i for iOS
 
-Say what the step will be
+## Application Flow and Layout
 
-```
-Give the example
-```
+<img src="assets/images/TrailAppComponentChart.png"
+     alt="Application Component Tree"
+     style="float: center" 
+     height= "400" /> 
 
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+<img src="assets/images/TrailAppUI.png"
+     alt="Application UI Diagram"
+     style="float: center" 
+     height= "400" />      
 
 ## Built With
 
 * [Javascript](https://javascript.info/) - The primary language used
+* [Expo](https://expo.io/) - Application Build Service
 * [React-Native](https://facebook.github.io/react-native/) - The application library used
+* [React-Redux](https://react-redux.js.org/) - State Management
+* [React-Native-Navigation](https://reactnavigation.org/) - Screen Navigation
+* [Redux-Thunk](https://github.com/reduxjs/redux-thunk) - Middleware for Redux stores
 * [Firebase](https://firebase.google.com/) - Used for hosting the application
-
-## Contributing
-
-***
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Christopher Burge** - *Initial work* - [ChrisBurge](https://github.com/burgechris)
+* [ChrisBurge](https://github.com/burgechris)
 
 ## License
 
+*Open-source*
 
+Copyright (c) 2019 **_Christopher Burge_**
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+* Hat tip to Maximilian Schwarzmüller for countless hours of tutorials on Udemy 
 
