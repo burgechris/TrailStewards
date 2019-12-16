@@ -41,10 +41,10 @@ const WorkRecordEntryScreen = props => {
     >
       <ScrollView>
         <View style={styles.screen}>
-          {/* <View>
+          <View style={styles.pickerContainer}>
           <Picker
-            placeholder='Please Select a Member Group'
             style={styles.picker}
+            placeholder='Please Select a Member Group'
             id='memberGroupId'
             selectedValue={selectedMemberGroup}
             onValueChange={setSelectedMemberGroup}
@@ -52,7 +52,7 @@ const WorkRecordEntryScreen = props => {
             <Picker.Item label='Northwest Trail Alliance' value='m1' />
             <Picker.Item label='hello' value='m2' />
           </Picker>
-          </View> */}
+          </View>
           <Input 
             id='title'
             label='Entry Title'
@@ -114,14 +114,19 @@ WorkRecordEntryScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    flex: .5,
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: 20
   },
+  pickerContainer: {
+    flex: .5,
+    padding: 20
+  },
   picker: {
-    width: 100,
-    height: 50,
+    width: 300,
+    height: 20,
     margin: 20
   },
   // input: {
