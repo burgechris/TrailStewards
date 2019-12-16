@@ -20,7 +20,12 @@ _Alternatively you could run on a simulator_
 <img src="assets/images/TrailAppComponentChart.png"
      alt="Application Component Tree"
      style="float: center" 
-     height= "600" /> 
+     height= "400" /> 
+
+<img src="assets/images/TrailAppComponentUI.png"
+     alt="Application Component Tree"
+     style="float: center" 
+     height= "400" />      
 
 ## Built With
 
