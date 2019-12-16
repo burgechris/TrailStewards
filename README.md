@@ -2,9 +2,9 @@
 
 #### _iOS or Android Application, 2019_
 
-This application will allow a way for mountain bike advocacy groups across the state of Oregon to accurately track and record volunteer hours and trail-building efforts. It will aggregate this data to be used as a reporting tool for Oregon Mountain Biking Coalition and other state-wide member trail organizations.
-
 #### By _**Christopher Burge**_
+
+This application will allow a way for mountain bike advocacy groups across the state of Oregon to accurately track and record volunteer hours and trail-building efforts. It will aggregate this data to be used as a reporting tool for Oregon Mountain Biking Coalition and other state-wide member trail organizations.
 
 ### Prerequisites
 
