@@ -48,7 +48,7 @@ _Alternatively you could run on a simulator through Android Studio and XCode_
 
 ## Authors
 
-* **Christopher Burge** - [ChrisBurge](https://github.com/burgechris)
+* [ChrisBurge](https://github.com/burgechris)
 
 ## License
 
@@ -58,5 +58,5 @@ Copyright (c) 2019 **_Christopher Burge_**
 
 ## Acknowledgments
 
-* Hat tip to Maximilian Schwarzmüller for countless hours of tutorials on Udemy *
+* Hat tip to Maximilian Schwarzmüller for countless hours of tutorials on Udemy 
 
