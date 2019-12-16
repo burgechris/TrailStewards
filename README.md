@@ -31,8 +31,8 @@ _Alternatively you could run on a simulator through Android Studio and XCode_
      style="float: center" 
      height= "400" /> 
 
-<img src="assets/images/TrailAppComponentUI.png"
-     alt="Application Component Tree"
+<img src="assets/images/TrailAppUI.png"
+     alt="Application UI Diagram"
      style="float: center" 
      height= "400" />      
 
