@@ -6,10 +6,9 @@ import {
   Button,
   TouchableWithoutFeedback,
   Keyboard,
-  Picker
  } from 'react-native';
 import { useDispatch } from 'react-redux';
-
+import RNPickerSelect from 'react-native-picker-select';
 
 import Input from '../../components/Input';
 import WorkRecordsScreen from './WorkRecordsScreen';
@@ -17,14 +16,15 @@ import { MEMBERGROUPS } from '../../data/dummyData'
 import * as recordActions from '../../store/actions/workRecords'
 
 const WorkRecordEntryScreen = props => {
+  const [memberGroupId, setMemberGroupId] = useState('');
   const [title, setTitle] = useState('');
-  const [selectedMemberGroup, setSelectedMemberGroup] = useState('');
   const [hours, setHours] = useState('');
   const [volunteers, setVolunteers] = useState('');
   const [landManager, setLandManager] = useState('');
   const [trailName, setTrailName] = useState('');
   const [region, setRegion] = useState('');
   const [miles, setMiles] = useState('');
+  const placeholder= {label: 'Select a Member Group...', value: null}
   
   const dispatch = useDispatch();
   const submitHandler = () => {
@@ -41,18 +41,15 @@ const WorkRecordEntryScreen = props => {
     >
       <ScrollView>
         <View style={styles.screen}>
-          <View style={styles.pickerContainer}>
-          <Picker
-            style={styles.picker}
-            placeholder='Please Select a Member Group'
-            id='memberGroupId'
-            selectedValue={selectedMemberGroup}
-            onValueChange={setSelectedMemberGroup}
-            >
-            <Picker.Item label='Northwest Trail Alliance' value='m1' />
-            <Picker.Item label='hello' value='m2' />
-          </Picker>
-          </View>
+            <RNPickerSelect
+              placeholder={placeholder}
+              value={memberGroupId}
+              onValueChange={setMemberGroupId}
+              items={[
+                { label: 'Northwest Trail Alliance', value: 'm1' },
+                { label: 'Central Oregon Trail Alliance', value: 'm2' },
+              ]}
+            />
           <Input 
             id='title'
             label='Entry Title'
@@ -114,20 +111,22 @@ WorkRecordEntryScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: .5,
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: 20
   },
-  pickerContainer: {
-    flex: .5,
-    padding: 20
-  },
+  // pickerContainer: {
+  //   flex: 1,
+  //   padding: 20
+  // },
   picker: {
+    flex: .5,
+    padding: 20,
     width: 300,
     height: 20,
-    margin: 20
+    marginTop: -10
   },
   // input: {
   //   width: '80%',

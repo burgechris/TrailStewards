@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
       const newWorkRecord = new WorkRecord(
         new Date().toString(),
         action.recordData.id,
-        action.recordData.userId,
+        // action.recordData.userId,
         action.recordData.memberGroupId,
         action.recordData.title,
         action.recordData.hours,
