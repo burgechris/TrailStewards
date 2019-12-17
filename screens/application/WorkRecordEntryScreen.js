@@ -5,31 +5,33 @@ import {
   ScrollView,
   Button,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
  } from 'react-native';
- import { Switch, Router, Route } from 'react-router-native';
- import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import RNPickerSelect from 'react-native-picker-select';
 
 import Input from '../../components/Input';
-import WorkRecordsScreen from './WorkRecordsScreen';
 import * as recordActions from '../../store/actions/workRecords'
 
 const WorkRecordEntryScreen = props => {
+  const [memberGroupId, setMemberGroupId] = useState('');
   const [title, setTitle] = useState('');
   const [hours, setHours] = useState('');
   const [volunteers, setVolunteers] = useState('');
-  const [club, setClub] = useState('');
   const [landManager, setLandManager] = useState('');
   const [trailName, setTrailName] = useState('');
   const [region, setRegion] = useState('');
   const [miles, setMiles] = useState('');
+  const placeholder= {label: 'Select a Member Group...', value: null}
   
   const dispatch = useDispatch();
+
+  console.log(memberGroupId)
+
   const submitHandler = () => {
-     dispatch(recordActions.createRecord(title, hours, volunteers, club, landManager, trailName, region, miles));
+    dispatch(recordActions.createRecord(memberGroupId, title, hours, volunteers, landManager, trailName, region, miles));
      props.navigation.goBack();
   };
-  
 
   return (
     <TouchableWithoutFeedback
@@ -39,6 +41,15 @@ const WorkRecordEntryScreen = props => {
     >
       <ScrollView>
         <View style={styles.screen}>
+            <RNPickerSelect
+              placeholder={placeholder}
+              value={memberGroupId}
+              onValueChange={value => setMemberGroupId(value)}
+              items={[
+                { label: 'Northwest Trail Alliance', value: 'm1' },
+                { label: 'Central Oregon Trail Alliance', value: 'm2' },
+              ]}
+            />
           <Input 
             id='title'
             label='Entry Title'
@@ -57,12 +68,6 @@ const WorkRecordEntryScreen = props => {
             value={volunteers}
             onChangeText={setVolunteers}
           />
-          <Input
-            id='club'
-            label='Club/Member Organization'
-            value={club} 
-            onChangeText={setClub}
-            />
           <Input
             id='landManager'
             label='Land Manager'
@@ -88,13 +93,13 @@ const WorkRecordEntryScreen = props => {
             value={miles} 
             onChangeText={setMiles}
           />
+          </View>
           <View style={styles.buttonContainer}>
             <Button title='Submit' onPress={submitHandler} />
             <Button title='Cancel' onPress={() => {
               props.navigation.goBack();
             }} />
           </View>
-        </View>
       </ScrollView>
     </TouchableWithoutFeedback>
   );
@@ -107,9 +112,21 @@ WorkRecordEntryScreen.navigationOptions = {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     margin: 20
+  },
+  // pickerContainer: {
+  //   flex: 1,
+  //   padding: 20
+  // },
+  picker: {
+    flex: .5,
+    padding: 20,
+    width: 300,
+    height: 20,
+    marginTop: -10
   },
   // input: {
   //   width: '80%',
