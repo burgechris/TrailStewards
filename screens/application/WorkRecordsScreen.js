@@ -38,7 +38,6 @@ const WorkRecordsScreen = props => {
           <TouchableOpacity onPress={seeDetailsHandler}>
             <WorkRecord
               title={itemData.item.title}
-              club={itemData.item.club}
             />
           </TouchableOpacity>
           )}

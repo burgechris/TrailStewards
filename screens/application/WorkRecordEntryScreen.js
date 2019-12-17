@@ -11,8 +11,6 @@ import { useDispatch } from 'react-redux';
 import RNPickerSelect from 'react-native-picker-select';
 
 import Input from '../../components/Input';
-import WorkRecordsScreen from './WorkRecordsScreen';
-import { MEMBERGROUPS } from '../../data/dummyData'
 import * as recordActions from '../../store/actions/workRecords'
 
 const WorkRecordEntryScreen = props => {
@@ -27,11 +25,13 @@ const WorkRecordEntryScreen = props => {
   const placeholder= {label: 'Select a Member Group...', value: null}
   
   const dispatch = useDispatch();
+
+  console.log(memberGroupId)
+
   const submitHandler = () => {
-     dispatch(recordActions.createRecord(title, memberGroupId, hours, volunteers, landManager, trailName, region, miles));
+    dispatch(recordActions.createRecord(memberGroupId, title, hours, volunteers, landManager, trailName, region, miles));
      props.navigation.goBack();
   };
-  
 
   return (
     <TouchableWithoutFeedback
@@ -44,7 +44,7 @@ const WorkRecordEntryScreen = props => {
             <RNPickerSelect
               placeholder={placeholder}
               value={memberGroupId}
-              onValueChange={setMemberGroupId}
+              onValueChange={value => setMemberGroupId(value)}
               items={[
                 { label: 'Northwest Trail Alliance', value: 'm1' },
                 { label: 'Central Oregon Trail Alliance', value: 'm2' },
