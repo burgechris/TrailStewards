@@ -48,6 +48,14 @@ const WorkRecordEntryScreen = props => {
               items={[
                 { label: 'Northwest Trail Alliance', value: 'm1' },
                 { label: 'Central Oregon Trail Alliance', value: 'm2' },
+                { label: 'Salem Area Trail Alliance', value: 'm3' },
+                { label: 'Oregon Timber Trail Alliance', value: 'm4' },
+                { label: 'Hood River Area Trail Stewards', value: 'm5' },
+                { label: 'Rogue Valley Mountain Bike Association', value: 'm6' },
+                { label: 'Trans-Cascadia', value: 'm7' },
+                { label: 'Alpine Trail Crew Association', value: 'm8' },
+                { label: 'Greater Oakridge Area Trail Stewards', value: 'm9' },
+                { label: 'Team Dirt', value: 'm10' }
               ]}
             />
           <Input 

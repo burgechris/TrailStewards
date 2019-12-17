@@ -46,14 +46,20 @@ export const MEMBERGROUPS = [
   ),
   new MemberGroup(
     'm8',
-    'Central Oregon Trail Alliance',
-    'COTA',
+    'Alpine Trail Crew Association',
+    'ATCA',
     '#9dab86'
   ),
   new MemberGroup(
     'm9',
     'Greater Oakridge Area Trail Stewards',
     'GOATS',
+    '#9dab86'
+  ),
+  new MemberGroup(
+    'm10',
+    'Team Dirt',
+    'TD',
     '#9dab86'
   )
 ];
