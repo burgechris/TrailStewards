@@ -22,11 +22,11 @@ const WorkRecordEntryScreen = props => {
   const [trailName, setTrailName] = useState('');
   const [region, setRegion] = useState('');
   const [miles, setMiles] = useState('');
+
   const placeholder= {label: 'Select a Member Group...', value: null}
   
+  
   const dispatch = useDispatch();
-
-  console.log(memberGroupId)
 
   const submitHandler = () => {
     dispatch(recordActions.createRecord(memberGroupId, title, hours, volunteers, landManager, trailName, region, miles));
@@ -61,12 +61,14 @@ const WorkRecordEntryScreen = props => {
           <Input 
             id='title'
             label='Entry Title'
+            blurOnSubmit={ false }    
             value={title} 
             onChangeText={setTitle}
             />
           <Input
             id='hours'
             label='Hours'
+            blurOnSubmit={false}
             value={hours} 
             onChangeText={setHours}
             />

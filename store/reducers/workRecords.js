@@ -1,4 +1,4 @@
-import { CREATE_RECORD } from '../actions/workRecords';
+import { CREATE_RECORD, SET_RECORD } from '../actions/workRecords';
 import WorkRecord from '../../models/workRecord';
 import { WORKRECORDS } from '../../data/dummyData';
 
@@ -9,9 +9,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SET_RECORD:
+      return {
+        workRecords: action.workRecords,
+      };
+
     case CREATE_RECORD:
       const newWorkRecord = new WorkRecord(
-        new Date().toString(),
         action.recordData.id,
         // action.recordData.userId,
         action.recordData.memberGroupId,

@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, FlatList, Text, Platform, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
 import WorkRecordDetails from '../../components/WorkRecordDetails';
 import { MEMBERGROUPS } from '../../data/dummyData';
+import * as workRecordsActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
-  const memGrId = props.navigation.getParam('memberGroupId');
-
-  const workRecords = useSelector(state => state.workRecords.workRecords);
-
-  const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
-
   const [detailView, setDetailView] = useState(false);
+  const memGrId = props.navigation.getParam('memberGroupId');
+  const workRecords = useSelector(state => state.workRecords.workRecords);
+  const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(workRecordsActions.fetchRecords())
+  }, [dispatch]);
 
   const seeDetailsHandler = () => {
     setDetailView(true);

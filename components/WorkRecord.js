@@ -16,7 +16,6 @@ const WorkRecord = props => {
     <Card style={styles.record} >
       <View>
         <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.club}>{props.club}</Text>
       </View>
     </Card>
   );

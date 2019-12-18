@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 import{ useScreens } from 'react-native-screens';
+import ReduxThunk from 'redux-thunk';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
@@ -15,7 +16,7 @@ const rootReducer= combineReducers({
   workRecords: workRecordsReducer
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 export default function App() {
   return (
