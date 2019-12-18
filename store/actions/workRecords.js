@@ -1,18 +1,19 @@
-import workRecords from "../reducers/workRecords";
 import WorkRecord from '../../models/workRecord';
 
 export const CREATE_RECORD = 'CREATE_RECORD';
 export const SET_RECORD = 'SET_RECORD';
 
+
 export const fetchRecords = () => {
   return async dispatch => {
-    const response = await fetch('https://trail-stewardship-app.firebaseio.com/workrecords/`${memberGroupId}`.json', 
+    const response = await fetch('https://trail-stewardship-app.firebaseio.com/workrecords.json', 
   );
 
     const resData = await response.json();
     const loadedWorkRecords = [];
 
       for (const key in resData) {
+        // console.log(resData)
         loadedWorkRecords.push(new WorkRecord(
           key,
           resData[key].memberGroupId,
@@ -25,16 +26,14 @@ export const fetchRecords = () => {
           resData[key].miles
           )
         );
-
       }
-
-    dispatch( {type: SET_RECORD, workRecords: loadedWorkRecords} )
+    dispatch({type: SET_RECORD, workRecords: loadedWorkRecords})
   };
 };
 
 export const createRecord = (memberGroupId, title, hours, volunteers, landManager, trailName, region, miles) => {
   return async dispatch => {
-    const response = await fetch('https://trail-stewardship-app.firebaseio.com/workrecords/`${memberGroupId}`.json', {
+    const response = await fetch('https://trail-stewardship-app.firebaseio.com/workrecords.json', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

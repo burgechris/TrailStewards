@@ -65,40 +65,37 @@ export const MEMBERGROUPS = [
 ];
 
 export const WORKRECORDS = [
-  new WorkRecord(
-    'r1',
-    'u1',
-    'm1',
-    'Sandy Ridge Work Day',
-    6,
-    30,
-    'BLM',
-    'Flo Motion',
-    'Mt. Hood',
-    1
-  ),
-  new WorkRecord(
-    'r2',
-    'u1',
-    'm1',
-    'Rocky Point Work Day',
-    6,
-    25,
-    'BLM',
-    'Skeet Chute',
-    'Rocky Point',
-    1
-  ),
-  new WorkRecord(
-    'r3',
-    'u1',
-    'm2',
-    'Tylers Work Day',
-    4,
-    15,
-    'BLM',
-    'Tylers Traverse',
-    'Bend',
-    2
-  )
+  // new WorkRecord(
+  //   'r1',
+  //   'm1',
+  //   'Sandy Ridge Work Day',
+  //   6,
+  //   30,
+  //   'BLM',
+  //   'Flo Motion',
+  //   'Mt. Hood',
+  //   1
+  // ),
+  // new WorkRecord(
+  //   'r2',
+  //   'm1',
+  //   'Rocky Point Work Day',
+  //   6,
+  //   25,
+  //   'BLM',
+  //   'Skeet Chute',
+  //   'Rocky Point',
+  //   1
+  // ),
+  // new WorkRecord(
+  //   'r3',
+  //   'm2',
+  //   'Tylers Work Day',
+  //   4,
+  //   15,
+  //   'BLM',
+  //   'Tylers Traverse',
+  //   'Bend',
+  //   2
+  // )
 ];

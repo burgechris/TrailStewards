@@ -22,7 +22,6 @@ export default (state = initialState, action) => {
         action.recordData.title,
         action.recordData.hours,
         action.recordData.volunteers,
-        action.recordData.club,
         action.recordData.landManager,
         action.recordData.trailName,
         action.recordData.region,
