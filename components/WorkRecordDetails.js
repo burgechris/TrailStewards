@@ -6,7 +6,7 @@ const WorkRecordDetails = props => {
   return (
     <Modal visible={props.visible} animationType='slide'>
       <View style={styles.container} >
-        <Text>Details!</Text>
+        <Text>{props.title}</Text>
         <Button title='Cancel' onPress={props.onCancel} />
       </View>
     </Modal>

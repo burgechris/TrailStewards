@@ -4,9 +4,6 @@ import {
   Text,
   Image,
   StyleSheet,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-  Platform
 } from 'react-native';
 
 import Card from './Card'
