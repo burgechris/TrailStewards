@@ -4,7 +4,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
-import WorkRecordDetails from '../../components/WorkRecordDetails';
+import DetailModal from '../../components/DetailModal';
 import { MEMBERGROUPS } from '../../data/dummyData';
 import * as workRecordsActions from '../../store/actions/workRecords';
 
@@ -45,7 +45,7 @@ const WorkRecordsScreen = props => {
           </TouchableOpacity>
           )}
         /> 
-      <WorkRecordDetails 
+      <DetailModal
         visible={detailView}
         onCancel={() => setDetailView(false)}
       />
