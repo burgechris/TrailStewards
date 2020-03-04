@@ -21,7 +21,7 @@ const WorkRecordsScreen = props => {
 
   const seeDetailsHandler = (id, title) => {
     props.navigation.navigate('WorkRecordDetails', {
-      workRecordsId: id,
+      workRecordId: id,
       workRecordTitle: title
     });
     // setDetailView(true);
