@@ -9,19 +9,23 @@ import { MEMBERGROUPS } from '../../data/dummyData';
 import * as workRecordsActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
-  const [detailView, setDetailView] = useState(false);
+  // const [detailView, setDetailView] = useState(false);
   const memGrId = props.navigation.getParam('memberGroupId');
   const workRecords = useSelector(state => state.workRecords.workRecords);
   const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
 
   useEffect(() => {
     dispatch(workRecordsActions.fetchRecords())
   }, [dispatch]);
 
-  const seeDetailsHandler = () => {
-    setDetailView(true);
-  }
+  const seeDetailsHandler = (id, title) => {
+    props.navigation.navigate('WorkRecordDetails', {
+      workRecordsId: id,
+      workRecordTitle: title
+    });
+    // setDetailView(true);
+  };
 
   if (displayedWorkRecords.length === 0) {
     return (
@@ -32,23 +36,22 @@ const WorkRecordsScreen = props => {
   }
 
   return(
-    
     <View style={styles.screen}>
       <FlatList 
         data={displayedWorkRecords} 
         keyExtractor={item => item.id}
         renderItem={itemData => (
-          <TouchableOpacity onPress={seeDetailsHandler}>
+          <TouchableOpacity onPress={() => {seeDetailsHandler(itemData.item.id, itemData.item.title)}}>
             <WorkRecord
               title={itemData.item.title}
             />
           </TouchableOpacity>
           )}
         /> 
-      <DetailModal
+      {/* <DetailModal
         visible={detailView}
         onCancel={() => setDetailView(false)}
-      />
+      /> */}
     </View>
   );
 };

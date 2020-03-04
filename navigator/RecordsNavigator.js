@@ -12,7 +12,8 @@ const RecordsNavigator = createStackNavigator(
   HomeScreen: HomeScreen,
   MemberGroups: MemberGroupsScreen,
   WorkRecords: WorkRecordsScreen,
-  NewWorkRecord: WorkRecordEntryScreen
+  NewWorkRecord: WorkRecordEntryScreen,
+  WorkRecordDetails: DetailsScreen
   },
   {
     defaultNavigationOptions: {
