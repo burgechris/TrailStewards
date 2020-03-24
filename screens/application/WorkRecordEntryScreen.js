@@ -5,7 +5,8 @@ import {
 	ScrollView,
 	Button,
 	TouchableWithoutFeedback,
-	Keyboard
+	Keyboard, 
+	Alert
 } from "react-native";
 import { useDispatch } from "react-redux";
 
@@ -16,6 +17,7 @@ import * as recordActions from "../../store/actions/workRecords";
 const WorkRecordEntryScreen = props => {
 	const [memberGroupId, setMemberGroupId] = useState("");
 	const [title, setTitle] = useState("");
+	const [titleIsValid, setTitleIsValid] = useState(false);
 	const [hours, setHours] = useState("");
 	const [volunteers, setVolunteers] = useState("");
 	const [landManager, setLandManager] = useState("");
@@ -27,7 +29,11 @@ const WorkRecordEntryScreen = props => {
 
 	const dispatch = useDispatch();
 
-	const submitHandler = () => {
+	const submitHandler = useCallback(() => {
+		if (!titleIsValid) {
+			Alert.alert('Wrong Input', 'Please check the errors in the form', [{text: 'OK'}])
+			return;
+		}
 		dispatch(
 			recordActions.createRecord(
 				memberGroupId,
@@ -41,6 +47,19 @@ const WorkRecordEntryScreen = props => {
 			)
 		);
 		props.navigation.goBack();
+	});
+
+	// useEffect(() => {
+	// 	props.navigation.setParams({ submit: submitHandler });
+	// }, [submitHandler]);
+
+	const inputChangeHandler = text => {
+		if (text.trim().length === 0) {
+			setTitleIsValid(false);
+		} else {
+			setTitleIsValid(true);
+		}
+		setTitle(text);
 	};
 
 	return (
@@ -73,7 +92,7 @@ const WorkRecordEntryScreen = props => {
 						label="Entry Title"
 						blurOnSubmit={false}
 						value={title}
-						onChangeText={text = setTitle(text)}
+						onChangeText={inputChangeHandler}
 						autoCapitalize='words'
 					/>
 					<Input
@@ -81,35 +100,35 @@ const WorkRecordEntryScreen = props => {
 						label="Hours"
 						blurOnSubmit={false}
 						value={hours}
-						onChangeText={text = setHours(text)}
+						onChangeText={setHours}
 						keyboardType='decimal-pad'
 					/>
 					<Input
 						id="volunteers"
 						label="Number of Volunteers"
 						value={volunteers}
-						onChangeText={text = setVolunteers(text)}
+						onChangeText={setVolunteers}
 						keyboardType='numeric'
 					/>
 					<Input
 						id="landManager"
 						label="Land Manager"
 						value={landManager}
-						onChangeText={text = setLandManager(text)}
+						onChangeText={setLandManager}
 						autoCapitalize='words'
 					/>
 					<Input
 						id="trailName"
 						label="Trail Name"
 						value={trailName}
-						onChangeText={text = setTrailName(text)}
+						onChangeText={setTrailName}
 						autoCapitalize='words'
 					/>
 					<Input
 						id="region"
 						label="Region"
 						value={region}
-						onChangeText={text = setRegion(text)}
+						onChangeText={setRegion}
 						autoCapitalize='words'
 					/>
 					<Input
@@ -117,7 +136,7 @@ const WorkRecordEntryScreen = props => {
 						label="Miles"
 						keyboardType="numeric"
 						value={miles}
-						onChangeText={text = setMiles(text)}
+						onChangeText={setMiles}
 						keyboardType='decimal-pad'
 					/>
 				</View>
