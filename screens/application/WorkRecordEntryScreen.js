@@ -73,45 +73,52 @@ const WorkRecordEntryScreen = props => {
 						label="Entry Title"
 						blurOnSubmit={false}
 						value={title}
-						onChangeText={setTitle}
+						onChangeText={text = setTitle(text)}
+						autoCapitalize='words'
 					/>
 					<Input
 						id="hours"
 						label="Hours"
 						blurOnSubmit={false}
 						value={hours}
-						onChangeText={setHours}
+						onChangeText={text = setHours(text)}
+						keyboardType='decimal-pad'
 					/>
 					<Input
 						id="volunteers"
 						label="Number of Volunteers"
 						value={volunteers}
-						onChangeText={setVolunteers}
+						onChangeText={text = setVolunteers(text)}
+						keyboardType='numeric'
 					/>
 					<Input
 						id="landManager"
 						label="Land Manager"
 						value={landManager}
-						onChangeText={setLandManager}
+						onChangeText={text = setLandManager(text)}
+						autoCapitalize='words'
 					/>
 					<Input
 						id="trailName"
 						label="Trail Name"
 						value={trailName}
-						onChangeText={setTrailName}
+						onChangeText={text = setTrailName(text)}
+						autoCapitalize='words'
 					/>
 					<Input
 						id="region"
 						label="Region"
 						value={region}
-						onChangeText={setRegion}
+						onChangeText={text = setRegion(text)}
+						autoCapitalize='words'
 					/>
 					<Input
 						id="miles"
 						label="Miles"
 						keyboardType="numeric"
 						value={miles}
-						onChangeText={setMiles}
+						onChangeText={text = setMiles(text)}
+						keyboardType='decimal-pad'
 					/>
 				</View>
 				<View style={styles.buttonContainer}>
