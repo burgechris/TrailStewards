@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
-import{ useScreens } from 'react-native-screens';
+import{ enableScreens } from 'react-native-screens';
 import ReduxThunk from 'redux-thunk';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
@@ -10,7 +10,7 @@ import * as Font from 'expo-font';
 import workRecordsReducer from './store/reducers/workRecords';
 import RecordsNavigator from './navigator/RecordsNavigator';
 
-useScreens();
+enableScreens();
 
 const rootReducer= combineReducers({
   workRecords: workRecordsReducer
