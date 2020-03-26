@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
 import {
 	View,
 	StyleSheet,
@@ -14,6 +14,12 @@ import Picker from "../../components/Picker";
 import Input from "../../components/Input";
 import * as recordActions from "../../store/actions/workRecords";
 
+const formReducer = (state, action) => {
+	if (action.type === 'CREATE_RECORD') {
+
+	}
+};
+
 const WorkRecordEntryScreen = props => {
 	const [memberGroupId, setMemberGroupId] = useState("");
 	const [title, setTitle] = useState("");
@@ -28,6 +34,12 @@ const WorkRecordEntryScreen = props => {
 	const placeholder = { label: "Select a Member Group...", value: null };
 
 	const dispatch = useDispatch();
+
+	useReducer(formReducer, {
+		inputValues: {},
+		inputValidities: {},
+		formIsValid: false
+	});
 
 	const submitHandler = useCallback(() => {
 		if (!titleIsValid) {
@@ -47,11 +59,20 @@ const WorkRecordEntryScreen = props => {
 			)
 		);
 		props.navigation.goBack();
-	});
+	}, [dispatch, 
+			memberGroupId,
+			title,
+			hours,
+			volunteers,
+			landManager,
+			trailName,
+			region,
+			miles,
+			titleIsValid]);
 
-	// useEffect(() => {
-	// 	props.navigation.setParams({ submit: submitHandler });
-	// }, [submitHandler]);
+	useEffect(() => {
+		props.navigation.setParams({ submit: submitHandler });
+	}, [submitHandler]);
 
 	const inputChangeHandler = text => {
 		if (text.trim().length === 0) {
