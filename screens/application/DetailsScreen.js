@@ -7,10 +7,23 @@ const WorkRecordDetailsScreen = props => {
   const selectedWorkRecord = useSelector(state => state.workRecords.workRecords.find(wr => wr.id === workRecordId));
 
   return (
-    <ScrollView>
-      <Text>{selectedWorkRecord.title}</Text>
-    </ScrollView>
-  );
+		<ScrollView style={styles.screen}>
+			<Text>Title: {selectedWorkRecord.title}</Text>
+			<Text>Hours: {selectedWorkRecord.hours}</Text>
+			<Text>Number of volunteers: {selectedWorkRecord.volunteers}</Text>
+			<Text>Miles built/maintained: {selectedWorkRecord.miles}</Text>
+			<Text>Land Manager: {selectedWorkRecord.landManager}</Text>
+			<Text>Trail Name: {selectedWorkRecord.trailName}</Text>
+			<Text>Region: {selectedWorkRecord.region}</Text>
+		</ScrollView>
+	);
 };
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    margin: 20
+  }
+});
 
 export default WorkRecordDetailsScreen;
