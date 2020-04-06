@@ -6,6 +6,7 @@ import {
 	Button,
 	TouchableWithoutFeedback,
 	Keyboard, 
+	KeyboardAvoidingView,
 	Alert
 } from "react-native";
 import { useDispatch } from "react-redux";
@@ -82,94 +83,103 @@ const WorkRecordEntryScreen = props => {
 	};
 
 	return (
-		<TouchableWithoutFeedback
-			onPress={() => {
-				Keyboard.dismiss();
-			}}
+		<KeyboardAvoidingView
+			style={{ flex: 1}}
+			behavior="padding"
+			keyboardVerticalOffset={100}
 		>
-			<ScrollView>
-				<View style={styles.screen}>
-					<Picker
-						placeholder={placeholder}
-						value={memberGroupId}
-						onValueChange={value => setMemberGroupId(value)}
-						items={[
-							{ label: "Northwest Trail Alliance", value: "m1" },
-							{ label: "Central Oregon Trail Alliance", value: "m2" },
-							{ label: "Salem Area Trail Alliance", value: "m3" },
-							{ label: "Oregon Timber Trail Alliance", value: "m4" },
-							{ label: "Hood River Area Trail Stewards", value: "m5" },
-							{ label: "Rogue Valley Mountain Bike Association", value: "m6" },
-							{ label: "Trans-Cascadia", value: "m7" },
-							{ label: "Alpine Trail Crew Association", value: "m8" },
-							{ label: "Greater Oakridge Area Trail Stewards", value: "m9" },
-							{ label: "Team Dirt", value: "m10" }
-						]}
-					/>
-					<Input
-						id="title"
-						label="Entry Title"
-						blurOnSubmit={false}
-						value={title}
-						onChangeText={textChangeHandler}
-						autoCapitalize='words'
-					/>
-					<Input
-						id="hours"
-						label="Hours"
-						blurOnSubmit={false}
-						value={hours}
-						onChangeText={setHours}
-						keyboardType='decimal-pad'
-					/>
-					<Input
-						id="volunteers"
-						label="Number of Volunteers"
-						value={volunteers}
-						onChangeText={setVolunteers}
-						keyboardType='numeric'
-					/>
-					<Input
-						id="landManager"
-						label="Land Manager"
-						value={landManager}
-						onChangeText={setLandManager}
-						autoCapitalize='words'
-					/>
-					<Input
-						id="trailName"
-						label="Trail Name"
-						value={trailName}
-						onChangeText={setTrailName}
-						autoCapitalize='words'
-					/>
-					<Input
-						id="region"
-						label="Region"
-						value={region}
-						onChangeText={setRegion}
-						autoCapitalize='words'
-					/>
-					<Input
-						id="miles"
-						label="Miles"
-						keyboardType="numeric"
-						value={miles}
-						onChangeText={setMiles}
-						keyboardType='decimal-pad'
-					/>
-				</View>
-				<View style={styles.buttonContainer}>
-					<Button title="Submit" onPress={submitHandler} />
-					<Button
-						title="Cancel"
-						onPress={() => {
-							props.navigation.goBack();
-						}}
-					/>
-				</View>
-			</ScrollView>
-		</TouchableWithoutFeedback>
+			<TouchableWithoutFeedback
+				onPress={() => {
+					Keyboard.dismiss();
+				}}
+			>
+				<ScrollView>
+					<View style={styles.screen}>
+						<Picker
+							placeholder={placeholder}
+							value={memberGroupId}
+							onValueChange={value => setMemberGroupId(value)}
+							items={[
+								{ label: "Northwest Trail Alliance", value: "m1" },
+								{ label: "Central Oregon Trail Alliance", value: "m2" },
+								{ label: "Salem Area Trail Alliance", value: "m3" },
+								{ label: "Oregon Timber Trail Alliance", value: "m4" },
+								{ label: "Hood River Area Trail Stewards", value: "m5" },
+								{
+									label: "Rogue Valley Mountain Bike Association",
+									value: "m6"
+								},
+								{ label: "Trans-Cascadia", value: "m7" },
+								{ label: "Alpine Trail Crew Association", value: "m8" },
+								{ label: "Greater Oakridge Area Trail Stewards", value: "m9" },
+								{ label: "Team Dirt", value: "m10" }
+							]}
+						/>
+						<Input
+							id="title"
+							label="Entry Title"
+							blurOnSubmit={false}
+							value={title}
+							onChangeText={textChangeHandler}
+							autoCapitalize="words"
+						/>
+						<Input
+							id="hours"
+							label="Hours"
+							blurOnSubmit={false}
+							value={hours}
+							onChangeText={setHours}
+							keyboardType="decimal-pad"
+						/>
+						<Input
+							id="volunteers"
+							label="Number of Volunteers"
+							value={volunteers}
+							onChangeText={setVolunteers}
+							keyboardType="numeric"
+						/>
+						<Input
+							id="landManager"
+							label="Land Manager"
+							value={landManager}
+							onChangeText={setLandManager}
+							autoCapitalize="words"
+						/>
+						<Input
+							id="trailName"
+							label="Trail Name"
+							value={trailName}
+							onChangeText={setTrailName}
+							autoCapitalize="words"
+						/>
+						<Input
+							id="region"
+							label="Region"
+							value={region}
+							onChangeText={setRegion}
+							autoCapitalize="words"
+						/>
+						<Input
+							id="miles"
+							label="Miles"
+							keyboardType="numeric"
+							value={miles}
+							onChangeText={setMiles}
+							keyboardType="decimal-pad"
+						/>
+					</View>
+					<View style={styles.buttonContainer}>
+						<Button title="Submit" onPress={submitHandler} />
+						<Button
+							title="Cancel"
+							onPress={() => {
+								props.navigation.goBack();
+							}}
+						/>
+					</View>
+				</ScrollView>
+			</TouchableWithoutFeedback>
+		</KeyboardAvoidingView>
 	);
 };
 
