@@ -35,11 +35,9 @@ const WorkRecordEntryScreen = props => {
 
 	const dispatch = useDispatch();
 
-	useReducer(formReducer, {
-		inputValues: {},
-		inputValidities: {},
-		formIsValid: false
-	});
+	// useReducer(formReducer, {
+	// 	inputValues: {}
+	// });
 
 	const submitHandler = useCallback(() => {
 		if (!titleIsValid) {
@@ -74,7 +72,7 @@ const WorkRecordEntryScreen = props => {
 		props.navigation.setParams({ submit: submitHandler });
 	}, [submitHandler]);
 
-	const inputChangeHandler = text => {
+	const textChangeHandler = text => {
 		if (text.trim().length === 0) {
 			setTitleIsValid(false);
 		} else {
@@ -113,7 +111,7 @@ const WorkRecordEntryScreen = props => {
 						label="Entry Title"
 						blurOnSubmit={false}
 						value={title}
-						onChangeText={inputChangeHandler}
+						onChangeText={textChangeHandler}
 						autoCapitalize='words'
 					/>
 					<Input
