@@ -34,7 +34,7 @@ const MemberGroupsScreen = props => {
   );
 };
 
-MemberGroupsScreen.navigationOptions = navigationData => {
+MemberGroupsScreen.navigationOptions = navData => {
   return {
     headerTitle: 'Member Groups'
   }

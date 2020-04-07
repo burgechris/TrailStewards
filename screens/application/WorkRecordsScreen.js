@@ -56,8 +56,8 @@ const WorkRecordsScreen = props => {
   );
 };
 
-WorkRecordsScreen.navigationOptions = navigationData => {
-  const memGrId = navigationData.navigation.getParam('memberGroupId')
+WorkRecordsScreen.navigationOptions = navData => {
+  const memGrId = navData.navigation.getParam('memberGroupId')
 
   const selectedMemberGroup = MEMBERGROUPS.find(memGr => memGr.id === memGrId
     )

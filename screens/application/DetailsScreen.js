@@ -19,6 +19,12 @@ const WorkRecordDetailsScreen = props => {
 	);
 };
 
+WorkRecordDetailsScreen.navigationOptions = navData => {
+  return {
+		headerTitle: navData.navigation.getParam('workRecordTitle')
+	};
+}
+
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
