@@ -9,7 +9,7 @@ import {
 	KeyboardAvoidingView,
 	Alert
 } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Picker from "../../components/Picker";
 import Input from "../../components/Input";
@@ -22,15 +22,20 @@ const formReducer = (state, action) => {
 };
 
 const WorkRecordEntryScreen = props => {
-	const [memberGroupId, setMemberGroupId] = useState("");
-	const [title, setTitle] = useState("");
+	const workRecordId = props.navigation.getParam("workRecordId");
+	const editedWorkRecord = useSelector(state =>
+		state.workRecords.workRecords.find(wr => wr.id === workRecordId)
+	);
+
+	const [memberGroupId, setMemberGroupId] = useState(editedWorkRecord ? editedWorkRecord.memberGroupId : '');
+	const [title, setTitle] = useState(editedWorkRecord ? editedWorkRecord.title : '');
 	const [titleIsValid, setTitleIsValid] = useState(false);
-	const [hours, setHours] = useState("");
-	const [volunteers, setVolunteers] = useState("");
-	const [landManager, setLandManager] = useState("");
-	const [trailName, setTrailName] = useState("");
-	const [region, setRegion] = useState("");
-	const [miles, setMiles] = useState("");
+	const [hours, setHours] = useState(editedWorkRecord ? editedWorkRecord.hours : '');
+	const [volunteers, setVolunteers] = useState(editedWorkRecord ? editedWorkRecord.volunteers : '');
+	const [landManager, setLandManager] = useState(editedWorkRecord ? editedWorkRecord.landManager : '');
+	const [trailName, setTrailName] = useState(editedWorkRecord ? editedWorkRecord.trailName : '');
+	const [region, setRegion] = useState(editedWorkRecord ? editedWorkRecord.region : '');
+	const [miles, setMiles] = useState(editedWorkRecord ? editedWorkRecord.miles : '');
 
 	const placeholder = { label: "Select a Member Group...", value: null };
 
@@ -45,18 +50,33 @@ const WorkRecordEntryScreen = props => {
 			Alert.alert('Wrong Input', 'Please check the errors in the form', [{text: 'OK'}])
 			return;
 		}
-		dispatch(
-			recordActions.createRecord(
-				memberGroupId,
-				title,
-				hours,
-				volunteers,
-				landManager,
-				trailName,
-				region,
-				miles
-			)
-		);
+		if (editedWorkRecord) {
+			dispatch(
+				recordActions.updateRecord(
+					memberGroupId,
+					title,
+					hours,
+					volunteers,
+					landManager,
+					trailName,
+					region,
+					miles
+				)
+			);
+		} else {
+				dispatch(
+					recordActions.createRecord(
+						memberGroupId,
+						title,
+						hours,
+						volunteers,
+						landManager,
+						trailName,
+						region,
+						miles
+					)
+				);
+			}
 		props.navigation.goBack();
 	}, [dispatch, 
 			memberGroupId,
@@ -161,7 +181,7 @@ const WorkRecordEntryScreen = props => {
 						/>
 						<Input
 							id="miles"
-							label="Miles"
+							label="Miles Reclaimed"
 							keyboardType="numeric"
 							value={miles}
 							onChangeText={setMiles}
@@ -183,9 +203,13 @@ const WorkRecordEntryScreen = props => {
 	);
 };
 
-WorkRecordEntryScreen.navigationOptions = {
-	headerTitle: "Add Record"
-};
+WorkRecordEntryScreen.navigationOptions = navData => {
+	return {
+		headerTitle: navData.navigation.getParam('workRecordId')
+			? 'Edit Work Record'
+			: 'Add Work Record',
+	};
+}
 
 const styles = StyleSheet.create({
 	screen: {
@@ -195,19 +219,6 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		margin: 20
 	},
-	// picker: {
-	// 	flex: 0.5,
-	// 	padding: 20,
-	// 	width: 300,
-	// 	height: 20,
-	// 	marginTop: -10
-	// },
-	// input: {
-	// 	width: "80%",
-	// 	borderBottomColor: "black",
-	// 	borderBottomWidth: 1,
-	// 	padding: 5
-	// },
 	buttonContainer: {
 		paddingTop: 20,
 		flexDirection: "row",

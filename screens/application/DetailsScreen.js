@@ -8,7 +8,6 @@ const WorkRecordDetailsScreen = props => {
 
   return (
 		<ScrollView style={styles.screen}>
-			<Text>Title: {selectedWorkRecord.title}</Text>
 			<Text>Hours: {selectedWorkRecord.hours}</Text>
 			<Text>Number of volunteers: {selectedWorkRecord.volunteers}</Text>
 			<Text>Miles built/maintained: {selectedWorkRecord.miles}</Text>
