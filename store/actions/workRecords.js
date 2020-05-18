@@ -5,7 +5,6 @@ export const CREATE_RECORD = 'CREATE_RECORD';
 export const UPDATE_RECORD = 'UPDATE_RECORD';
 export const SET_RECORD = 'SET_RECORD';
 
-
 export const fetchRecords = () => {
   return async dispatch => {
     try {
@@ -19,16 +18,17 @@ export const fetchRecords = () => {
     const loadedWorkRecords = [];
 
       for (const key in resData) {
-        loadedWorkRecords.push(new WorkRecord(
-          key,
-          resData[key].memberGroupId,
-          resData[key].title,
-          resData[key].hours,
-          resData[key].volunteers,
-          resData[key].landManager,
-          resData[key].trailName,
-          resData[key].region,
-          resData[key].miles
+        loadedWorkRecords.push(
+          new WorkRecord (
+            key,
+            resData[key].memberGroupId,
+            resData[key].title,
+            resData[key].hours,
+            resData[key].volunteers,
+            resData[key].landManager,
+            resData[key].trailName,
+            resData[key].region,
+            resData[key].miles
           )
         );
       }
@@ -40,10 +40,10 @@ export const fetchRecords = () => {
   };
 };
 
-export const deleteRecord = (workRecordId) => {
+export const deleteRecord = workRecordId => {
 	return async (dispatch) => {
 		await fetch(
-			"https://trail-stewardship-app.firebaseio.com/workrecords.json",
+			`https://trail-stewardship-app.firebaseio.com/workrecords/${workRecordId}.json`,
 			{
 				method: "DELETE",
 			}
@@ -91,6 +91,7 @@ export const createRecord = (memberGroupId, title, hours, volunteers, landManage
 };
 
 export const updateRecord = (
+  id,
 	memberGroupId,
 	title,
 	hours,
@@ -101,15 +102,14 @@ export const updateRecord = (
 	miles
 ) => {
 	return async (dispatch) => {
-		const response = await fetch(
-			"https://trail-stewardship-app.firebaseio.com/workrecords.json",
+		await fetch(
+			`https://trail-stewardship-app.firebaseio.com/workrecords/${id}.json`,
 			{
 				method: "PATCH",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-          id,
 					memberGroupId,
 					title,
 					hours,

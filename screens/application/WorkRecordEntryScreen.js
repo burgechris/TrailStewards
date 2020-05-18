@@ -22,7 +22,7 @@ const formReducer = (state, action) => {
 };
 
 const WorkRecordEntryScreen = props => {
-	const workRecordId = props.navigation.getParam("workRecordId");
+	const workRecordId = props.navigation.getParam('workRecordId');
 	const editedWorkRecord = useSelector(state =>
 		state.workRecords.availableWorkRecords.find(wr => wr.id === workRecordId)
 	);
@@ -53,6 +53,7 @@ const WorkRecordEntryScreen = props => {
 		if (editedWorkRecord) {
 			dispatch(
 				recordActions.updateRecord(
+					workRecordId,
 					memberGroupId,
 					title,
 					hours,
@@ -77,8 +78,9 @@ const WorkRecordEntryScreen = props => {
 					)
 				);
 			}
-		props.navigation.goBack();
+		props.navigation.navigate({ routeName: "MemberGroups" });
 	}, [dispatch, 
+			workRecordId,
 			memberGroupId,
 			title,
 			hours,

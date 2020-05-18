@@ -9,9 +9,7 @@ import * as workRecordsActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
   const memGrId = props.navigation.getParam('memberGroupId');
-  const workRecords = useSelector(
-		(state) => state.workRecords.availableWorkRecords
-	);
+  const workRecords = useSelector(state => state.workRecords.availableWorkRecords);
   const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
   const dispatch = useDispatch(); 
 
