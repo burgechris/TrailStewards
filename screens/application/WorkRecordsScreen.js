@@ -9,7 +9,9 @@ import * as workRecordsActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
   const memGrId = props.navigation.getParam('memberGroupId');
-  const workRecords = useSelector(state => state.workRecords.workRecords);
+  const workRecords = useSelector(
+		(state) => state.workRecords.availableWorkRecords
+	);
   const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
   const dispatch = useDispatch(); 
 
@@ -32,21 +34,23 @@ const WorkRecordsScreen = props => {
     )
   }
 
-  return(
-    <View style={styles.screen}>
-      <FlatList 
-        data={displayedWorkRecords} 
-        keyExtractor={item => item.id}
-        renderItem={itemData => (
-          <TouchableOpacity onPress={() => {seeDetailsHandler(itemData.item.id, itemData.item.title)}}>
-            <WorkRecord
-              title={itemData.item.title}
-            />
-          </TouchableOpacity>
-          )}
-        /> 
-    </View>
-  );
+  return (
+		<View style={styles.screen}>
+			<FlatList
+				data={displayedWorkRecords}
+				keyExtractor={(item) => item.id}
+				renderItem={(itemData) => (
+					<TouchableOpacity
+						onPress={() => {
+							seeDetailsHandler(itemData.item.id, itemData.item.title);
+						}}
+					>
+						<WorkRecord title={itemData.item.title} />
+					</TouchableOpacity>
+				)}
+			/>
+		</View>
+	);
 };
 
 WorkRecordsScreen.navigationOptions = navData => {

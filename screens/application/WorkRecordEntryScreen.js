@@ -24,7 +24,7 @@ const formReducer = (state, action) => {
 const WorkRecordEntryScreen = props => {
 	const workRecordId = props.navigation.getParam("workRecordId");
 	const editedWorkRecord = useSelector(state =>
-		state.workRecords.workRecords.find(wr => wr.id === workRecordId)
+		state.workRecords.availableWorkRecords.find(wr => wr.id === workRecordId)
 	);
 
 	const [memberGroupId, setMemberGroupId] = useState(editedWorkRecord ? editedWorkRecord.memberGroupId : '');
