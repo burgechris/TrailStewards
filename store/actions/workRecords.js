@@ -1,19 +1,24 @@
 import WorkRecord from '../../models/workRecord';
 
+export const DELETE_RECORD = 'DELETE_RECORD';
 export const CREATE_RECORD = 'CREATE_RECORD';
+export const UPDATE_RECORD = 'UPDATE_RECORD';
 export const SET_RECORD = 'SET_RECORD';
 
 
 export const fetchRecords = () => {
   return async dispatch => {
-    const response = await fetch('https://trail-stewardship-app.firebaseio.com/workrecords.json', 
-  );
+    try {
+      const response = await fetch('https://trail-stewardship-app.firebaseio.com/workrecords.json', 
+      );
+    if (!response.ok) {
+        throw new Error('Something went wrong!');
+      }
 
     const resData = await response.json();
     const loadedWorkRecords = [];
 
       for (const key in resData) {
-        // console.log(resData)
         loadedWorkRecords.push(new WorkRecord(
           key,
           resData[key].memberGroupId,
@@ -27,8 +32,24 @@ export const fetchRecords = () => {
           )
         );
       }
-    dispatch({type: SET_RECORD, workRecords: loadedWorkRecords})
+
+      dispatch({type: SET_RECORD, workRecords: loadedWorkRecords})
+    } catch(err) {
+      throw err;
+    }
   };
+};
+
+export const deleteRecord = (workRecordId) => {
+	return async (dispatch) => {
+		await fetch(
+			"https://trail-stewardship-app.firebaseio.com/workrecords.json",
+			{
+				method: "DELETE",
+			}
+		);
+		dispatch({ type: DELETE_RECORD, rid: workRecordId });
+	};
 };
 
 export const createRecord = (memberGroupId, title, hours, volunteers, landManager, trailName, region, miles) => {
@@ -67,4 +88,53 @@ export const createRecord = (memberGroupId, title, hours, volunteers, landManage
       }
     });
   }
+};
+
+export const updateRecord = (
+	memberGroupId,
+	title,
+	hours,
+	volunteers,
+	landManager,
+	trailName,
+	region,
+	miles
+) => {
+	return async (dispatch) => {
+		const response = await fetch(
+			"https://trail-stewardship-app.firebaseio.com/workrecords.json",
+			{
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+          id,
+					memberGroupId,
+					title,
+					hours,
+					volunteers,
+					landManager,
+					trailName,
+					region,
+					miles,
+				}),
+			}
+		);
+
+		dispatch({
+      type: UPDATE_RECORD,
+      rid: id,
+			recordData: {
+				memberGroupId,
+				title,
+				hours,
+				volunteers,
+				landManager,
+				trailName,
+				region,
+				miles,
+			},
+		});
+	};
 };

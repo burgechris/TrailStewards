@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { Ionicons } from "@expo/vector-icons";
 
 import HomeScreen from '../screens/application/HomeScreen';
 import MemberGroupsScreen from '../screens/application/MemberGroupsScreen';

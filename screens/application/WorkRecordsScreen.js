@@ -4,12 +4,10 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
-import DetailModal from '../../components/DetailModal';
 import { MEMBERGROUPS } from '../../data/dummyData';
 import * as workRecordsActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
-  // const [detailView, setDetailView] = useState(false);
   const memGrId = props.navigation.getParam('memberGroupId');
   const workRecords = useSelector(state => state.workRecords.workRecords);
   const displayedWorkRecords = workRecords.filter(wr => wr.memberGroupId.indexOf(memGrId) >= 0);
@@ -24,7 +22,6 @@ const WorkRecordsScreen = props => {
       workRecordId: id,
       workRecordTitle: title
     });
-    // setDetailView(true);
   };
 
   if (displayedWorkRecords.length === 0) {
@@ -48,10 +45,6 @@ const WorkRecordsScreen = props => {
           </TouchableOpacity>
           )}
         /> 
-      {/* <DetailModal
-        visible={detailView}
-        onCancel={() => setDetailView(false)}
-      /> */}
     </View>
   );
 };
