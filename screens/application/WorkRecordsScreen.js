@@ -45,44 +45,43 @@ const WorkRecordsScreen = props => {
 
   if (displayedWorkRecords.length === 0) {
     return (
-      <View>
-        <Text>Oops. No Records Found.</Text>
-      </View>
-    )
+			<View style={styles.screen}>
+				<Text style={styles.oops}>Sorry, my gender-neutral dube.</Text>
+				<Text style={styles.oops}>No Records Found.</Text>
+			</View>
+		);
   }
 
   return (
-		<View style={styles.screen}>
-			<FlatList
-				data={displayedWorkRecords}
-				keyExtractor={(item) => item.id}
-				renderItem={(itemData) => (
-					<WorkRecord
-						title={itemData.item.title}
-						onSelect={() => {
-							seeDetailsHandler(itemData.item.id, itemData.item.title);
-						}}
-					>
-						<Button
-							title="View Details"
-							style={(fontSize = "30")}
-							color={Colors.primary}
-							onPress={() => {
-								seeDetailsHandler(itemData.item.id, itemData.item.title);
-							}}
-						/>
-						<Button
-							title="Delete"
-							style={(fontSize = "30")}
-							color={Colors.primary}
-							onPress={() => {
-								deleteHandler(itemData.item.id);
-							}}
-						/>
-					</WorkRecord>
-				)}
-			/>
-		</View>
+    <FlatList
+      data={displayedWorkRecords}
+      keyExtractor={(item) => item.id}
+      renderItem={(itemData) => (
+        <WorkRecord
+          title={itemData.item.title}
+          onSelect={() => {
+            seeDetailsHandler(itemData.item.id, itemData.item.title);
+          }}
+        >
+          <Button
+            title="View Details"
+            style={(fontSize = "30")}
+            color={Colors.primary}
+            onPress={() => {
+              seeDetailsHandler(itemData.item.id, itemData.item.title);
+            }}
+          />
+          <Button
+            title="Delete"
+            style={(fontSize = "30")}
+            color={Colors.primary}
+            onPress={() => {
+              deleteHandler(itemData.item.id);
+            }}
+          />
+        </WorkRecord>
+      )}
+    />
 	);
 };
 
@@ -97,9 +96,16 @@ WorkRecordsScreen.navigationOptions = navData => {
 };  
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
+	screen: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: "center",
+		fontWeight: "bold",
+	},
+	oops: {
+		fontWeight: "bold",
+		fontSize: 20,
+	},
 });
 
 export default WorkRecordsScreen;
