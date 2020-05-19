@@ -46,10 +46,10 @@ const WorkRecordEntryScreen = props => {
 	// });
 
 	const submitHandler = useCallback(() => {
-		if (!titleIsValid) {
-			Alert.alert('Wrong Input', 'Please check the errors in the form', [{text: 'OK'}])
-			return;
-		}
+		// if (!titleIsValid) {
+		// 	Alert.alert('Wrong Input', 'Please check the errors in the form', [{text: 'OK'}])
+		// 	return;
+		// }
 		if (editedWorkRecord) {
 			dispatch(
 				recordActions.updateRecord(
@@ -142,7 +142,7 @@ const WorkRecordEntryScreen = props => {
 							label="Entry Title"
 							blurOnSubmit={false}
 							value={title}
-							onChangeText={textChangeHandler}
+							onChangeText={setTitle}
 							autoCapitalize="words"
 						/>
 						<Input

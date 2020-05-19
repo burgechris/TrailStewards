@@ -60,7 +60,7 @@ export default (state = initialState, action) => {
      return {
        ...state,
        availableWorkRecords: state.availableWorkRecords.filter(
-         wr => wr.id !== rid
+         wr => wr.id !== action.rid
        )
      };
   }

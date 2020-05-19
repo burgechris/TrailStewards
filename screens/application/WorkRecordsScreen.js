@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, Platform, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, FlatList, Text, Platform, Alert, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
 
 import WorkRecord from '../../components/WorkRecord';
 import { MEMBERGROUPS } from '../../data/dummyData';
-import * as workRecordsActions from '../../store/actions/workRecords';
+import * as workRecordActions from '../../store/actions/workRecords';
 
 const WorkRecordsScreen = props => {
   const memGrId = props.navigation.getParam('memberGroupId');
@@ -14,7 +14,7 @@ const WorkRecordsScreen = props => {
   const dispatch = useDispatch(); 
 
   useEffect(() => {
-    dispatch(workRecordsActions.fetchRecords())
+    dispatch(workRecordActions.fetchRecords())
   }, [dispatch]);
 
   const seeDetailsHandler = (id, title) => {

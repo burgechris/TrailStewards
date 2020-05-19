@@ -11,8 +11,25 @@ const WorkRecordDetailsScreen = props => {
 	const selectedWorkRecord = useSelector((state) =>
 		state.workRecords.availableWorkRecords.find((wr) => wr.id === workRecordId)
 	);
+
+	const dispatch = useDispatch();
+
 	const editWorkRecordHandler = (id) => {
 		props.navigation.navigate("NewWorkRecord", { workRecordId: id });
+	};
+
+	const deleteHandler = (id) => {
+		Alert.alert('Delete Record', 'Are you sure you want to delete this record?', [
+			{ text: 'Cancel', style: 'cancel' },
+			{ 
+				text: 'Yes',
+				style: 'Destructive',
+				onPress: () => {
+					dispatch(workRecordActions.deleteRecord(id));
+				}
+			}
+		]);
+		props.navigation.navigate('WorkRecords');
 	};
 
   return (
@@ -31,12 +48,20 @@ const WorkRecordDetailsScreen = props => {
 					editWorkRecordHandler(selectedWorkRecord.id);
 				}}
 			/>
+			<Button
+				title="Delete"
+				style={(fontSize = "30")}
+				color={Colors.primary}
+				onPress={() => {
+					deleteHandler(selectedWorkRecord.id);
+				}}
+			/>
 		</ScrollView>
 	);
 };
 
 WorkRecordDetailsScreen.navigationOptions = navData => {
-	
+
 	return {
 		headerTitle: navData.navigation.getParam("workRecordTitle"),
 		// headerRight: (
