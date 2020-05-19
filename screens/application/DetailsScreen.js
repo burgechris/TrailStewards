@@ -18,19 +18,6 @@ const WorkRecordDetailsScreen = props => {
 		props.navigation.navigate("NewWorkRecord", { workRecordId: id });
 	};
 
-	const deleteHandler = (id) => {
-		Alert.alert('Delete Record', 'Are you sure you want to delete this record?', [
-			{ text: 'Cancel', style: 'cancel' },
-			{ 
-				text: 'Yes',
-				style: 'Destructive',
-				onPress: () => {
-					dispatch(workRecordActions.deleteRecord(id));
-				}
-			}
-		]);
-		props.navigation.navigate('WorkRecords');
-	};
 
   return (
 		<ScrollView style={styles.screen}>
@@ -46,14 +33,6 @@ const WorkRecordDetailsScreen = props => {
 				color={Colors.primary}
 				onPress={() => {
 					editWorkRecordHandler(selectedWorkRecord.id);
-				}}
-			/>
-			<Button
-				title="Delete"
-				style={(fontSize = "30")}
-				color={Colors.primary}
-				onPress={() => {
-					deleteHandler(selectedWorkRecord.id);
 				}}
 			/>
 		</ScrollView>

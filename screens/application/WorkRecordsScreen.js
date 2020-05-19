@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import WorkRecord from '../../components/WorkRecord';
 import { MEMBERGROUPS } from '../../data/dummyData';
 import * as workRecordActions from '../../store/actions/workRecords';
+import Colors from '../../constants/colors';
 
 const WorkRecordsScreen = props => {
   const memGrId = props.navigation.getParam('memberGroupId');
@@ -24,6 +25,24 @@ const WorkRecordsScreen = props => {
     });
   };
 
+  const deleteHandler = (id) => {
+		Alert.alert(
+			"Delete Record",
+			"Are you sure you want to delete this record?",
+			[
+				{ text: "Cancel", style: "cancel" },
+				{
+					text: "Yes",
+					style: "Destructive",
+					onPress: () => {
+						dispatch(workRecordActions.deleteRecord(id));
+					},
+				},
+			]
+		);
+		// props.navigation.navigate("WorkRecords");
+	};
+
   if (displayedWorkRecords.length === 0) {
     return (
       <View>
@@ -38,13 +57,29 @@ const WorkRecordsScreen = props => {
 				data={displayedWorkRecords}
 				keyExtractor={(item) => item.id}
 				renderItem={(itemData) => (
-					<TouchableOpacity
-						onPress={() => {
+					<WorkRecord
+						title={itemData.item.title}
+						onSelect={() => {
 							seeDetailsHandler(itemData.item.id, itemData.item.title);
 						}}
 					>
-						<WorkRecord title={itemData.item.title} />
-					</TouchableOpacity>
+						<Button
+							title="View Details"
+							style={(fontSize = "30")}
+							color={Colors.primary}
+							onPress={() => {
+								seeDetailsHandler(itemData.item.id, itemData.item.title);
+							}}
+						/>
+						<Button
+							title="Delete"
+							style={(fontSize = "30")}
+							color={Colors.primary}
+							onPress={() => {
+								deleteHandler(itemData.item.id);
+							}}
+						/>
+					</WorkRecord>
 				)}
 			/>
 		</View>

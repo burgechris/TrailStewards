@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   tile: {
     flex: 1,
     margin: 15,
-    width: '80%',
-    height: 150,
+    width: '90%',
+    height: 50,
     borderRadius: 10,
     overflow: 'hidden',
     elevation: 5
