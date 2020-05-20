@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Text, Platform, Button, StyleSheet, Alert } from 'react-native';
+import React from 'react';
+import { View, Text, Platform, Button, StyleSheet, Alert } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import Card from '../../components/Card';
 import Colors from '../../constants/colors';
-import * as workRecordActions from  '../../store/actions/workRecords';
 import HeaderButton from '../../components/HeaderButton';
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
@@ -20,22 +20,24 @@ const WorkRecordDetailsScreen = props => {
 
 
   return (
-		<ScrollView style={styles.screen}>
-			<Text>Hours: {selectedWorkRecord.hours}</Text>
-			<Text>Number of volunteers: {selectedWorkRecord.volunteers}</Text>
-			<Text>Miles built/maintained: {selectedWorkRecord.miles}</Text>
-			<Text>Land Manager: {selectedWorkRecord.landManager}</Text>
-			<Text>Trail Name: {selectedWorkRecord.trailName}</Text>
-			<Text>Region: {selectedWorkRecord.region}</Text>
-			<Button
-				title="Edit"
-				style={(fontSize = "30")}
-				color={Colors.primary}
-				onPress={() => {
-					editWorkRecordHandler(selectedWorkRecord.id);
-				}}
-			/>
-		</ScrollView>
+		<View style={styles.screen}>
+			<Card style={styles.card}>
+				<Text>Trail Name: {selectedWorkRecord.trailName}</Text>
+				<Text>Hours: {selectedWorkRecord.hours}</Text>
+				<Text>Number of volunteers: {selectedWorkRecord.volunteers}</Text>
+				<Text>Miles built/maintained: {selectedWorkRecord.miles}</Text>
+				<Text>Land Manager: {selectedWorkRecord.landManager}</Text>
+				<Text>Region: {selectedWorkRecord.region}</Text>
+				<Button
+					title="Edit"
+					style={styles.editBtn}
+					color={Colors.primary}
+					onPress={() => {
+						editWorkRecordHandler(selectedWorkRecord.id);
+					}}
+				/>
+			</Card>
+		</View>
 	);
 };
 
@@ -63,14 +65,30 @@ WorkRecordDetailsScreen.navigationOptions = navData => {
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    margin: 20
+	screen: {
+		flex: 1,
+		justifyContent: "flex-start",
+		alignItems: "center",
+	},
+	card: {
+		height: 200,
+		margin: 60,
+		width: "80%",
+		justifyContent: "space-around",
+		alignItems: "center",
 	},
 	editBtn: {
-		 fontSize: 30,
-		 paddingRight: '10px'
+		fontSize: 30,
+		paddingRight: "10px",
+	},
+	name: {
+		justifyContent: 'space-around'
 	}
+	// details: {
+	// 	justifyContent: "space-between",
+	// 	alignItems: "center",
+	// 	padding: 10,
+	// },
 });
 
 export default WorkRecordDetailsScreen;
