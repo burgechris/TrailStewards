@@ -5,6 +5,7 @@ import Card from '../../components/Card';
 import Colors from '../../constants/colors';
 import HeaderButton from '../../components/HeaderButton';
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const WorkRecordDetailsScreen = props => {
   const workRecordId = props.navigation.getParam('workRecordId');
@@ -22,20 +23,38 @@ const WorkRecordDetailsScreen = props => {
   return (
 		<View style={styles.screen}>
 			<Card style={styles.card}>
-				<Text>Trail Name: {selectedWorkRecord.trailName}</Text>
-				<Text>Hours: {selectedWorkRecord.hours}</Text>
-				<Text>Number of volunteers: {selectedWorkRecord.volunteers}</Text>
-				<Text>Miles built/maintained: {selectedWorkRecord.miles}</Text>
-				<Text>Land Manager: {selectedWorkRecord.landManager}</Text>
-				<Text>Region: {selectedWorkRecord.region}</Text>
-				<Button
-					title="Edit"
-					style={styles.editBtn}
-					color={Colors.primary}
-					onPress={() => {
-						editWorkRecordHandler(selectedWorkRecord.id);
-					}}
-				/>
+				<Text style={styles.name}>
+					Trail Name: {selectedWorkRecord.trailName}
+				</Text>
+				<Text style={styles.details}>Hours: {selectedWorkRecord.hours}</Text>
+				<Text style={styles.details}>
+					Number of volunteers: {selectedWorkRecord.volunteers}
+				</Text>
+				<Text style={styles.details}>
+					Miles built/maintained: {selectedWorkRecord.miles}
+				</Text>
+				<Text style={styles.details}>
+					Land Manager: {selectedWorkRecord.landManager}
+				</Text>
+				<Text style={styles.details}>Region: {selectedWorkRecord.region}</Text>
+				<View style={styles.btnContainer}>
+					<Button
+						title="Edit"
+						// style={styles.btnCard}
+						color={Colors.primary}
+						onPress={() => {
+							editWorkRecordHandler(selectedWorkRecord.id);
+						}}
+					/>
+					<Button
+						title="Back to Home"
+						style={styles.btnText}
+						color={Colors.primary}
+						onPress={() => {
+							props.navigation.popToTop();
+						}}
+					/>
+				</View>
 			</Card>
 		</View>
 	);
@@ -71,24 +90,42 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	card: {
-		height: 200,
+		height: 250,
 		margin: 60,
 		width: "80%",
 		justifyContent: "space-around",
 		alignItems: "center",
 	},
-	editBtn: {
-		fontSize: 30,
-		paddingRight: "10px",
+	btnCard: {
+		justifyContent: "center",
+		alignContent: "center",
+		height: 30,
+		marginHorizontal: 20,
+		marginVertical: 10,
+	},
+	btnText: {
+		fontSize: 40,
+		marginBottom: 10,
+	},
+	btnContainer: {
+		marginVertical: 20,
+		flexDirection: "row",
+		justifyContent: "center",
+		alignContent: 'space-around',
+		alignItems: "center",
 	},
 	name: {
-		justifyContent: 'space-around'
-	}
-	// details: {
-	// 	justifyContent: "space-between",
-	// 	alignItems: "center",
-	// 	padding: 10,
-	// },
+		fontSize: 20,
+		color: "#888",
+		textAlign: "center",
+		marginVertical: 20,
+	},
+	details: {
+		fontSize: 17,
+		color: "#888",
+		textAlign: "center",
+		marginVertical: 10,
+	},
 });
 
 export default WorkRecordDetailsScreen;
