@@ -37,7 +37,7 @@ const WorkRecord = props => {
 
 const styles = StyleSheet.create({
 	record: {
-		height: 100,
+		height: 120,
 		margin: 20,
 	},
 	touchable: {
